@@ -1,0 +1,41 @@
+@import 'src/styles.scss';
+
+:host { 
+    @include flex-col-center();
+
+    mat-toolbar { 
+        @include flex-row-center();
+        height: 100%;
+    }
+
+    .app-container { 
+        position: relative;
+        height: calc(100vh);
+        width: calc(100%);
+        $header-height: 60px;
+        $footer-height: 40px;
+        .header { 
+            height: $header-height;
+            
+        }
+        .body { 
+            height: calc(100% - $header-height - $footer-height);
+            display: flex;
+            flex-direction: row;
+            $side-nav-width: 100px;
+            .side-nav-container {
+                width: $side-nav-width;
+                height: 100%;
+            }
+            .content-container { 
+                @include flex-col-center();
+                width: calc(100% - $side-nav-width);
+                height: 100%;
+            }
+        }
+        .footer { 
+            height: $footer-height;
+        }
+    }
+    
+}

@@ -1,0 +1,12 @@
+@import 'src/styles.scss';
+
+mat-card { 
+    @include flex-col-center();
+    padding: 20px;
+    gap: 10px;
+    width: 500px;
+    text-align: center;
+    mat-divider { 
+        width: 100%;
+    }
+}

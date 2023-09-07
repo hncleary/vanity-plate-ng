@@ -1,0 +1,9 @@
+<h3>Registered Users</h3>
+<div class="users-list-container">
+    <ng-container *ngFor="let u of testUsers">
+        <mat-card class="user-container" (click)="goToUserPage(u)">
+            <p>{{u}}</p>
+            <mat-icon>east</mat-icon>
+        </mat-card>
+    </ng-container>
+</div>

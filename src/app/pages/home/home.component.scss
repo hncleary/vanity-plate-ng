@@ -1,0 +1,29 @@
+@import 'src/styles.scss';
+
+:host { 
+    @include flex-col-center();
+}
+
+mat-card { 
+    @include flex-row-center();
+    padding: 20px;
+}
+
+.users-list-container { 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .user-container { 
+        width: 150px;
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+        align-items: center;
+        justify-content: space-between;
+        
+        &:hover { 
+            background-color: lightgrey;
+            cursor: pointer;
+        }
+    }
+}
