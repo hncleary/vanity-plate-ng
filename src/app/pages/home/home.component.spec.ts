@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { Router } from '@angular/router';
+import { VanityDbService } from 'src/app/service/vanity-db.service';
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
@@ -8,11 +8,13 @@ describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(() => {
-    const routerStub = () => ({ navigateByUrl: () => ({}) });
+    const vanityDbServiceStub = () => ({ getUserIndexList: () => ({}) });
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [HomeComponent],
-      providers: [{ provide: Router, useFactory: routerStub }]
+      providers: [
+        { provide: VanityDbService, useFactory: vanityDbServiceStub }
+      ]
     });
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
@@ -20,9 +22,5 @@ describe('HomeComponent', () => {
 
   it('can load instance', () => {
     expect(component).toBeTruthy();
-  });
-
-  it(`testUsers has default value`, () => {
-    expect(component.testUsers).toEqual([`cyranek`, `test`]);
   });
 });

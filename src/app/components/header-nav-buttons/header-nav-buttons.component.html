@@ -1,7 +1,9 @@
 <div class="links-container">
     <ng-container *ngFor="let link of links">
         <div class="link-container" [routerLink]="'./' + link.route">
-            <mat-icon>{{link.icon}}</mat-icon>
+            <button mat-mini-fab>
+                <mat-icon>{{link.icon}}</mat-icon>
+            </button>
         </div>
         <mat-divider></mat-divider>
     </ng-container>

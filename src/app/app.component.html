@@ -1,21 +1,17 @@
 <div class="app-container">
+  <!-- Header -->
   <div class="header">
-    <mat-toolbar color="primary">
       <p>Vanity Plate Social</p>
-    </mat-toolbar>
+      <app-header-nav-buttons></app-header-nav-buttons>
   </div>
+  <!-- Body -->
   <div class="body">
-    <div class="side-nav-container">
-      <app-side-nav></app-side-nav>
-    </div>
     <div class="content-container">
       <router-outlet></router-outlet>
     </div>
   </div>
-
+  <!-- Footer -->
   <div class="footer">
-    <mat-toolbar color="primary">
-      <p>Bottom Text</p>
-    </mat-toolbar>
+    <!--  -->
   </div>
 </div>
