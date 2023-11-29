@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: PAGE_ROUTES.ABOUT, component: AboutComponent },
   { path: PAGE_ROUTES.USER + '/:userId', component: UserProfileComponent },
   { path: '',   redirectTo: PAGE_ROUTES.HOME, pathMatch: 'full' },
-  { path: '**',   redirectTo: PAGE_ROUTES.HOME, pathMatch: 'full' },
+  { path: '**',   redirectTo: PAGE_ROUTES.HOME },
 ];
 
 @NgModule({
