@@ -4,26 +4,25 @@ import { VanityDbService } from 'src/app/service/vanity-db.service';
 import { UserProfileComponent } from './user-profile.component';
 
 describe('UserProfileComponent', () => {
-  let pipe: UserProfileComponent;
+    let pipe: UserProfileComponent;
 
-  beforeEach(() => {
-    const routerStub = () => ({
-      events: { pipe: () => ({ subscribe: () => ({}) }) }
+    beforeEach(() => {
+        const routerStub = () => ({
+            events: { pipe: () => ({ subscribe: () => ({}) }) },
+        });
+        const vanityDbServiceStub = () => ({ getStatsForUser: () => ({}) });
+        TestBed.configureTestingModule({
+            providers: [
+                UserProfileComponent,
+                { provide: Router, useFactory: routerStub },
+                { provide: VanityDbService, useFactory: vanityDbServiceStub },
+            ],
+        });
+        spyOn(UserProfileComponent.prototype, 'getStats');
+        pipe = TestBed.inject(UserProfileComponent);
     });
-    const vanityDbServiceStub = () => ({ getStatsForUser: () => ({}) });
-    TestBed.configureTestingModule({
-      providers: [
-        UserProfileComponent,
-        { provide: Router, useFactory: routerStub },
-        { provide: VanityDbService, useFactory: vanityDbServiceStub }
-      ]
+
+    it('can load instance', () => {
+        expect(pipe).toBeTruthy();
     });
-    spyOn(UserProfileComponent.prototype, 'getStats');
-    pipe = TestBed.inject(UserProfileComponent);
-  });
-
-  it('can load instance', () => {
-    expect(pipe).toBeTruthy();
-  });
-
 });

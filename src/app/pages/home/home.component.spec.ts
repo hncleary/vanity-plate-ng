@@ -4,23 +4,21 @@ import { VanityDbService } from 'src/app/service/vanity-db.service';
 import { HomeComponent } from './home.component';
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+    let component: HomeComponent;
+    let fixture: ComponentFixture<HomeComponent>;
 
-  beforeEach(() => {
-    const vanityDbServiceStub = () => ({ getUserIndexList: () => ({}) });
-    TestBed.configureTestingModule({
-      schemas: [NO_ERRORS_SCHEMA],
-      declarations: [HomeComponent],
-      providers: [
-        { provide: VanityDbService, useFactory: vanityDbServiceStub }
-      ]
+    beforeEach(() => {
+        const vanityDbServiceStub = () => ({ getUserIndexList: () => ({}) });
+        TestBed.configureTestingModule({
+            schemas: [NO_ERRORS_SCHEMA],
+            declarations: [HomeComponent],
+            providers: [{ provide: VanityDbService, useFactory: vanityDbServiceStub }],
+        });
+        fixture = TestBed.createComponent(HomeComponent);
+        component = fixture.componentInstance;
     });
-    fixture = TestBed.createComponent(HomeComponent);
-    component = fixture.componentInstance;
-  });
 
-  it('can load instance', () => {
-    expect(component).toBeTruthy();
-  });
+    it('can load instance', () => {
+        expect(component).toBeTruthy();
+    });
 });

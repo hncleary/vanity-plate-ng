@@ -3,14 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class ApiService {
+    constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  /** Get content from URL in json format */
-  public getUrl(url: string): Observable<unknown> {
-      return this.http.get(url, { responseType: 'json'});
-  }
+    /** Get content from URL in json format */
+    public getUrl(url: string): Observable<unknown> {
+        return this.http.get(url, { responseType: 'json' });
+    }
 }

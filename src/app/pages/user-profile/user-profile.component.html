@@ -1,3 +1,13 @@
-<div class="stats-container">
+<!-- <div class="stats-container">
     {{userStats | json}}
+</div> -->
+
+<div class="stats-container">
+    <div class="sum-container">
+        <p>{{ username }}</p>
+        <p>Total Followers: {{ userSum.totalFollowers | number }}</p>
+    </div>
+    <ng-container>
+        <div></div>
+    </ng-container>
 </div>

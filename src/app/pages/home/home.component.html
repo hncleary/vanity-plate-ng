@@ -2,7 +2,7 @@
 <div class="users-list-container">
     <ng-container *ngFor="let user of sumCollection.sums">
         <mat-card class="user-container" (click)="goToUserPage(user.username)">
-            <p>{{user.username}}</p>
+            <p>{{ user.username }}</p>
             <mat-icon>east</mat-icon>
         </mat-card>
     </ng-container>
