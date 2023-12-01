@@ -1,0 +1,11 @@
+<div class="user-icon-container">
+    <img [src]="stats.iconBase64">
+</div>
+<div class="details">
+    <p class="display-name">{{stats.displayName}}</p>
+    <p class="handle">@{{stats.handle}}</p>
+    <mat-divider></mat-divider>
+    <p  class="sub-count">{{stats.followerCount| number}} Followers</p>
+    <p class="view-count">{{stats.totalTweets| number}} Tweets</p>
+</div>
+

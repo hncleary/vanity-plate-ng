@@ -1,0 +1,50 @@
+@import 'src/styles.scss';
+
+$width: 200px;
+$details-height: 100px;
+
+:host { 
+    width: $width;
+    display: flex;
+    height: 200px;
+    @include flex-col-center();
+
+}
+
+.user-icon-container {
+    width: 100%; 
+    display: flex;
+    @include flex-col-center();
+    img { 
+        border-radius: 25px;
+        display: flex;
+        width:  55px;
+        height:  60px;
+    }
+}
+
+.details { 
+    @include flex-col-center();
+    height: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    mat-divider {
+        margin: 5px;
+        width: 90%;
+    }
+    .display-name{ 
+        font-weight: bold;
+        font-size: medium;
+    }
+    .handle { 
+        color: grey;
+        font-size: small;
+    }
+    .sub-count { 
+        font-size: small;
+    } 
+    .view-count { 
+        font-size: small;
+        color: grey;
+    }     
+}

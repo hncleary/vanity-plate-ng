@@ -1,8 +1,48 @@
-.stats-container {
-    // 
+@import 'src/styles.scss';
+
+:host { 
+    width: 100%;
+    height: 100%;
 }
 
-.sum-container {
-    border: solid grey 1px;
-    padding: 10px;
+.stats-container {
+    padding-top: 15px;
+    width: 100%;
+    .user-sum-container { 
+        @include flex-row-center();
+        app-stats-block { 
+            width: 50%;
+            min-width: 250px;
+        }
+        .user-top-block { 
+            padding: 15px;
+            @include flex-col-center();
+            gap: 10px;
+            .username-id { 
+                font-weight: bold;
+                font-size: large;
+            }
+            .follower-count { 
+                font-size:medium;
+            }
+        }
+    }
+    .platform-title {
+        font-weight: bold;
+        @include flex-row-center();
+        padding: 20px;
+    }
+    .stats-block-container { 
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100%;
+        gap: 20px;
+        justify-content: center;
+    }
+
 }
+
+
+

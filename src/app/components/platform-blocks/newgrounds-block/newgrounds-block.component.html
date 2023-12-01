@@ -1,0 +1,36 @@
+<div class="user-icon-container">
+    <img [src]="imgSrc">
+</div>
+<div class="details">
+    <p class="display-name">{{stats.displayName}}</p>
+    <mat-divider></mat-divider>
+    <p  class="sub-count">{{stats.fans| number}} Fans</p>
+    <div class="counts-row">
+        <!-- movies -->
+        <div class="count">
+            <mat-icon>movie</mat-icon>
+            {{stats.moviesCount}}
+        </div>
+        <!-- music tracks -->
+        <div class="count">
+            <mat-icon>audiotrack</mat-icon>
+            {{stats.audioCount}}
+        </div>
+        <!-- art -->
+        <div class="count">
+            <mat-icon>image</mat-icon>
+            {{stats.artCount}}
+        </div>
+        <!-- games -->
+        <div class="count">
+            <mat-icon>videogame_asset</mat-icon>
+            {{stats.gamesCount}}
+        </div>
+        <!-- news -->
+        <div class="count">
+            <mat-icon>newspaper</mat-icon>
+            {{stats.newsCount}}
+        </div>
+    </div>
+</div>
+

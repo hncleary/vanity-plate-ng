@@ -21,11 +21,11 @@
             }
         }
         .body {
-            height: calc(100% - $header-height - $footer-height - 2px);
             display: flex;
             flex-direction: row;
             $side-nav-width: 100px;
             border: solid purple 1px;
+            padding-bottom: 25px;
             .content-container {
                 @include flex-col-center();
                 width: calc(100%);

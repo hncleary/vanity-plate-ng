@@ -40,5 +40,7 @@ export class UserProfileComponent {
         /** Summate total follower count */
         this.userSum = this._dbSvc.getProfileStatsSummation(username, this.userStats);
         this.loading = false;
+
+        console.log(this.userStats);
     }
 }
