@@ -1,111 +1,129 @@
-<!-- <div class="stats-container">
-    {{userStats | json}}
-</div> -->
-
 <div class="stats-container">
     <!-- User Sum Container -->
     <div class="user-sum-container">
         <app-stats-block>
             <div class="user-top-block">
-                <p class="username-id">{{ username }}</p>
+                <p class="display-name">{{ userStats.displayName }}</p>
+                <p class="username-id">/u/{{ userStats.id }}</p>
                 <p class="follower-count">Total Followers: {{ userSum.totalFollowers | number }}</p>
             </div>
         </app-stats-block>
     </div>
     
     <!-- Youtube -->
-    <div class="platform-title">
-        <p>YouTube</p>
-    </div>
-    <div class="stats-block-container">
-        <ng-container *ngFor="let youtube of userStats.youtubeStats">
-            <app-stats-block>
-               <app-youtube-block [stats]="youtube"></app-youtube-block>
-            </app-stats-block>
-        </ng-container>
-    </div>
+    <ng-container *ngIf="!!userStats.instaStats.length">
+        <div class="platform-title">
+            <p>YouTube</p>
+        </div>
+        <div class="stats-block-container">
+            <ng-container *ngFor="let youtube of userStats.youtubeStats">
+                <app-stats-block>
+                <app-youtube-block [stats]="youtube"></app-youtube-block>
+                </app-stats-block>
+            </ng-container>
+        </div>
+    </ng-container>
+
 
     <!-- Instagram -->
-    <div class="platform-title">
-        <p>Instagram</p>
-    </div>
-    <div class="stats-block-container">
-        <ng-container *ngFor="let instagram of userStats.instaStats">
-            <app-stats-block>
-                <app-instagram-block [stats]="instagram"></app-instagram-block>
-            </app-stats-block>
-        </ng-container>
-    </div>
+    <ng-container *ngIf="!!userStats.instaStats.length">
+        <div class="platform-title">
+            <p>Instagram</p>
+        </div>
+        <div class="stats-block-container">
+            <ng-container *ngFor="let instagram of userStats.instaStats">
+                <app-stats-block>
+                    <app-instagram-block [stats]="instagram"></app-instagram-block>
+                </app-stats-block>
+            </ng-container>
+        </div>
+    </ng-container>
+
 
     <!-- Spotify -->
-    <div class="platform-title">
-        <p>Spotify</p>
-    </div>
-    <div class="stats-block-container">
-        <ng-container *ngFor="let spotify of userStats.spotifyStats">
-            <app-stats-block>
-                <app-spotify-block [stats]="spotify"></app-spotify-block>
-            </app-stats-block>
-        </ng-container>
-    </div>
+    <ng-container *ngIf="!!userStats.spotifyStats.length">
+        <div class="platform-title">
+            <p>Spotify</p>
+        </div>
+        <div class="stats-block-container">
+            <ng-container *ngFor="let spotify of userStats.spotifyStats">
+                <app-stats-block>
+                    <app-spotify-block [stats]="spotify"></app-spotify-block>
+                </app-stats-block>
+            </ng-container>
+        </div>
+    </ng-container>
+
 
     <!-- Newgrounds -->
-    <div class="platform-title">
-        <p>Newgrounds</p>
-    </div>
-    <div class="stats-block-container">
-        <ng-container *ngFor="let newgrounds of userStats.newgroundsStats">
-            <app-stats-block>
-                <app-newgrounds-block [stats]="newgrounds"></app-newgrounds-block>
-            </app-stats-block>
-        </ng-container>
-    </div>
+    <ng-container *ngIf="!!userStats.newgroundsStats.length">
+        <div class="platform-title">
+            <p>Newgrounds</p>
+        </div>
+        <div class="stats-block-container">
+            <ng-container *ngFor="let newgrounds of userStats.newgroundsStats">
+                <app-stats-block>
+                    <app-newgrounds-block [stats]="newgrounds"></app-newgrounds-block>
+                </app-stats-block>
+            </ng-container>
+        </div>
+    </ng-container>
 
     <!-- SoundCloud -->
-    <div class="platform-title">
-        <p>SoundCloud</p>
-    </div>
-    <div class="stats-block-container">
-        <ng-container *ngFor="let soundcloud of userStats.soundcloudStats">
-            <app-stats-block>
-                <app-soundcloud-block [stats]="soundcloud"></app-soundcloud-block>
-            </app-stats-block>
-        </ng-container>
-    </div>
+    <ng-container *ngIf="!!userStats.soundcloudStats.length">
+        <div class="platform-title">
+            <p>SoundCloud</p>
+        </div>
+        <div class="stats-block-container">
+            <ng-container *ngFor="let soundcloud of userStats.soundcloudStats">
+                <app-stats-block>
+                    <app-soundcloud-block [stats]="soundcloud"></app-soundcloud-block>
+                </app-stats-block>
+            </ng-container>
+        </div>
+    </ng-container>
+
 
     <!-- Twitter -->
-    <div class="platform-title">
-        <p>Twitter</p>
-    </div>
-    <div class="stats-block-container">
-        <ng-container *ngFor="let twitter of userStats.twitterStats">
-            <app-stats-block>
-                <app-twitter-block [stats]="twitter"></app-twitter-block>
-            </app-stats-block>
-        </ng-container>
-    </div>
+    <ng-container *ngIf="!!userStats.twitterStats.length">
+        <div class="platform-title">
+            <p>Twitter</p>
+        </div>
+        <div class="stats-block-container">
+            <ng-container *ngFor="let twitter of userStats.twitterStats">
+                <app-stats-block>
+                    <app-twitter-block [stats]="twitter"></app-twitter-block>
+                </app-stats-block>
+            </ng-container>
+        </div>
+    </ng-container>
 
     <!-- Twitter -->
-    <div class="platform-title">
-        <p>Twitch</p>
-    </div>
-    <div class="stats-block-container">
-        <ng-container *ngFor="let twitch of userStats.twitchStats">
-            <app-stats-block>
-                <app-twitch-block [stats]="twitch"></app-twitch-block>
-            </app-stats-block>
-        </ng-container>
-    </div>
+    <ng-container *ngIf="!!userStats.twitchStats.length">
+        <div class="platform-title">
+            <p>Twitch</p>
+        </div>
+        <div class="stats-block-container">
+            <ng-container *ngFor="let twitch of userStats.twitchStats">
+                <app-stats-block>
+                    <app-twitch-block [stats]="twitch"></app-twitch-block>
+                </app-stats-block>
+            </ng-container>
+        </div>
+    </ng-container>
 
     <!-- Tik Tok -->
-    <div class="platform-title">
-        <p>Tik Tok</p>
-    </div>
-    <div class="stats-block-container">
-        <ng-container *ngFor="let tiktok of userStats.tiktokStats">
-            <app-stats-block>
-                <app-tiktok-block [stats]="tiktok"></app-tiktok-block>
-            </app-stats-block>
-        </ng-container>
-    </div>
+    <ng-container *ngIf="!!userStats.tiktokStats.length">
+        <div class="platform-title">
+            <p>Tik Tok</p>
+        </div>
+        <div class="stats-block-container">
+            <ng-container *ngFor="let tiktok of userStats.tiktokStats">
+                <app-stats-block>
+                    <app-tiktok-block [stats]="tiktok"></app-tiktok-block>
+                </app-stats-block>
+            </ng-container>
+        </div>
+    </ng-container>
+
 </div>

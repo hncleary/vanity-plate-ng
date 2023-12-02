@@ -172,6 +172,9 @@ export class TikTokStats {
 
 /** Object all stat object for a defined profile */
 export class VanityPlateProfileStats {
+    public id = '';
+    public displayName = '';
+    // Account Stats
     public youtubeStats: YtStats[] = [];
     public instaStats: InstagramStats[] = [];
     public spotifyStats: SpotifyStats[] = [];
