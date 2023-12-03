@@ -25,9 +25,11 @@ import { TiktokBlockComponent } from './components/platform-blocks/tiktok-block/
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { SearchInputComponent } from './components/search-input/search-input.component';
+import { GenericFilterPipe } from './pipes/generic-filter.pipe';
 
 @NgModule({
-    declarations: [AppComponent, HomeComponent, AboutComponent, UserProfileComponent, HeaderNavButtonsComponent, StatsBlockComponent, YoutubeBlockComponent, InstagramBlockComponent, SpotifyBlockComponent, NewgroundsBlockComponent, SoundcloudBlockComponent, TwitterBlockComponent, TwitchBlockComponent, TiktokBlockComponent],
+    declarations: [AppComponent, HomeComponent, AboutComponent, UserProfileComponent, HeaderNavButtonsComponent, StatsBlockComponent, YoutubeBlockComponent, InstagramBlockComponent, SpotifyBlockComponent, NewgroundsBlockComponent, SoundcloudBlockComponent, TwitterBlockComponent, TwitchBlockComponent, TiktokBlockComponent, SearchInputComponent, GenericFilterPipe],
     imports: [
         BrowserModule,
         AppRoutingModule,
