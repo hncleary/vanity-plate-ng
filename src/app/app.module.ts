@@ -22,6 +22,9 @@ import { SoundcloudBlockComponent } from './components/platform-blocks/soundclou
 import { TwitterBlockComponent } from './components/platform-blocks/twitter-block/twitter-block.component';
 import { TwitchBlockComponent } from './components/platform-blocks/twitch-block/twitch-block.component';
 import { TiktokBlockComponent } from './components/platform-blocks/tiktok-block/tiktok-block.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [AppComponent, HomeComponent, AboutComponent, UserProfileComponent, HeaderNavButtonsComponent, StatsBlockComponent, YoutubeBlockComponent, InstagramBlockComponent, SpotifyBlockComponent, NewgroundsBlockComponent, SoundcloudBlockComponent, TwitterBlockComponent, TwitchBlockComponent, TiktokBlockComponent],
@@ -35,7 +38,10 @@ import { TiktokBlockComponent } from './components/platform-blocks/tiktok-block/
         MatCardModule,
         HttpClientModule,
         MatButtonModule,
-        MatDividerModule
+        MatDividerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent],

@@ -2,7 +2,9 @@
 
 :host {
     @include flex-col-center();
-
+    .app-divider { 
+        margin: 10px;
+    }
     .app-container {
         position: relative;
         height: calc(100vh);
@@ -10,7 +12,6 @@
         $header-height: 100px;
         $footer-height: 40px;
         .header {
-            border: solid purple 1px;
             height: calc($header-height - 2px);
             width: calc(100% - 2px);
             @include flex-col-center();
@@ -24,7 +25,6 @@
             display: flex;
             flex-direction: row;
             $side-nav-width: 100px;
-            border: solid purple 1px;
             padding-bottom: 25px;
             .content-container {
                 @include flex-col-center();
@@ -34,7 +34,6 @@
         }
         .footer {
             height: calc($footer-height - 2px);
-            border: solid purple 1px;
         }
     }
 }

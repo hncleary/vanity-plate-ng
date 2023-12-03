@@ -28,6 +28,7 @@ $details-height: 100px;
     height: 100px;
     margin-top: 5px;
     margin-bottom: 5px;
+    width: calc(100% - 5px);
     mat-divider {
         margin: 5px;
         width: 90%;
@@ -35,10 +36,14 @@ $details-height: 100px;
     .display-name{ 
         font-weight: bold;
         font-size: medium;
+        text-align: center;
+        @include text-truncate;
     }
     .handle { 
         color: grey;
         font-size: small;
+        text-align: center;
+        @include text-truncate;
     }
     .sub-count { 
         font-size: small;

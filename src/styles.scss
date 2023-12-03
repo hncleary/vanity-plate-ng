@@ -27,3 +27,9 @@ p {
     @include flex-row-center();
     flex-direction: column;
 }
+@mixin text-truncate { 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}

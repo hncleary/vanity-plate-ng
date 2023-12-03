@@ -11,6 +11,7 @@ import { VanityDbService, VanityPlateSumCollection } from 'src/app/service/vanit
 })
 export class HomeComponent implements OnInit {
     public sumCollection: VanityPlateSumCollection = new VanityPlateSumCollection();
+    public filterValue = '';
 
     constructor(
         private _router: Router,
@@ -28,5 +29,9 @@ export class HomeComponent implements OnInit {
 
     public goToUserPage(username: string) {
         this._router.navigateByUrl(`/${PAGE_ROUTES.USER}/${username}`);
+    }
+
+    public clearFilterInput() { 
+        this.filterValue = '';
     }
 }
