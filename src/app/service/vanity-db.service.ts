@@ -63,9 +63,8 @@ export class VanityDbService {
 }
 
 export class VanityPlateSum {
-    /** The defined accounts Vanity-Plate-Social id / username */
     public username = '';
-    /** Total number of followers the defined account has across all platforms */
+    public displayName = '';
     public totalFollowers = 0;
 }
 

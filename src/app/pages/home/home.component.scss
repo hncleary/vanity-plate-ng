@@ -9,21 +9,56 @@ mat-card {
     padding: 20px;
 }
 
-.users-list-container {
+.user-list-table { 
+    width: 375px;
+    height: 500px;
+    overflow: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    .user-container {
-        width: 150px;
-        display: flex;
-        flex-direction: row;
-        gap: 25px;
-        align-items: center;
+    justify-content: flex-start;
+    mat-divider { 
+        width: 100%;
+    }
+    .user-item { 
+        width: calc(100% - 30px);
+        height: 35px;
+        @include flex-row-center();
         justify-content: space-between;
-
-        &:hover {
+        padding: 10px;
+        border-radius: 5px;
+        margin: 5px;
+        &:hover { 
             background-color: lightgrey;
             cursor: pointer;
         }
+        .display-name {
+            width: 40%;
+            @include text-truncate();
+            text-align: left;
+        }
+        .username { 
+            width: 20%;
+            color: grey;
+            font-size: smaller;
+            @include text-truncate();
+            text-align: left;
+        }
+        .follower-count {
+            @include flex-row-center();
+            justify-content: start;
+            mat-icon { 
+                font-size: 20px;
+                margin-top: 5px;
+            }
+            color: grey;
+            width: 25%;
+            @include text-truncate();
+            text-align: left;
+            font-size: smaller;
+        }
+        .icon { 
+            width: 10%;
+        }
+        
     }
 }

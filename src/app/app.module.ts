@@ -27,9 +27,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { GenericFilterPipe } from './pipes/generic-filter.pipe';
+import { NumberTruncatePipe } from './pipes/number-truncate.pipe';
 
 @NgModule({
-    declarations: [AppComponent, HomeComponent, AboutComponent, UserProfileComponent, HeaderNavButtonsComponent, StatsBlockComponent, YoutubeBlockComponent, InstagramBlockComponent, SpotifyBlockComponent, NewgroundsBlockComponent, SoundcloudBlockComponent, TwitterBlockComponent, TwitchBlockComponent, TiktokBlockComponent, SearchInputComponent, GenericFilterPipe],
+    declarations: [AppComponent, HomeComponent, AboutComponent, UserProfileComponent, HeaderNavButtonsComponent, StatsBlockComponent, YoutubeBlockComponent, InstagramBlockComponent, SpotifyBlockComponent, NewgroundsBlockComponent, SoundcloudBlockComponent, TwitterBlockComponent, TwitchBlockComponent, TiktokBlockComponent, SearchInputComponent, GenericFilterPipe, NumberTruncatePipe],
     imports: [
         BrowserModule,
         AppRoutingModule,
