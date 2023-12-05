@@ -8,4 +8,5 @@ import { TwitterStats } from 'src/app/service/vanity-db.service';
 })
 export class TwitterBlockComponent {
   @Input() stats: TwitterStats = new TwitterStats();
+  public imgSrc = 'assets/twitter.png';
 }

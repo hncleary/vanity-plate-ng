@@ -8,4 +8,5 @@ import { TwitchStats } from 'src/app/service/vanity-db.service';
 })
 export class TwitchBlockComponent {
   @Input() stats: TwitchStats = new TwitchStats();
+  public imgSrc = 'assets/twitch.png';
 }

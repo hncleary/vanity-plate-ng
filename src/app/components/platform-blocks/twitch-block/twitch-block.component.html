@@ -1,5 +1,5 @@
 <div class="user-icon-container">
-    <img [src]="stats.iconBas64">
+    <img [src]="!!stats.iconBas64 ? stats.iconBas64 :  imgSrc">
 </div>
 <div class="details">
     <p class="display-name">{{stats.displayName}}</p>
