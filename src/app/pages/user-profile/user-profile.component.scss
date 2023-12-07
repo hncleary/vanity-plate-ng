@@ -6,6 +6,7 @@
 }
 
 .stats-container {
+    @include flex-col-center();
     padding-top: 15px;
     width: 100%;
     .user-sum-container { 
@@ -15,6 +16,7 @@
             min-width: 250px;
         }
         .user-top-block { 
+            margin-top: 15px;
             padding: 15px;
             @include flex-col-center();
             gap: 10px;

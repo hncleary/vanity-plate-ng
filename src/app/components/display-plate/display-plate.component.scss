@@ -3,6 +3,8 @@
 :host { 
     margin-bottom: 8px;
     height: 85px;
+    min-width: 300px;
+    @include flex-row-center();
 }
 
 .plate-container { 

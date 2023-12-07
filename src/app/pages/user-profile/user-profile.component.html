@@ -1,9 +1,9 @@
 <div class="stats-container">
+    <app-display-plate [displayText]="userStats.displayName"></app-display-plate>
     <!-- User Sum Container -->
     <div class="user-sum-container" *ngIf="!loading">
         <app-stats-block>
             <div class="user-top-block">
-                <app-display-plate [displayText]="userStats.displayName"></app-display-plate>
                 <p class="display-name">{{ userStats.displayName }}</p>
                 <p class="username-id">/u/{{ userStats.id }}</p>
                 <p class="follower-count">Total Followers: {{ userSum.totalFollowers | number }}</p>

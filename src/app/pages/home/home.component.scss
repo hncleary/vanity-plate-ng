@@ -32,14 +32,16 @@ mat-card {
             cursor: pointer;
         }
         .display-name {
-            width: 40%;
+            width: 50%;
             @include text-truncate();
+            font-size: 13px;
             text-align: left;
         }
         .username { 
-            width: 20%;
+            width: 40%;
             color: grey;
             font-size: smaller;
+            font-size: 12px;
             @include text-truncate();
             text-align: left;
         }
@@ -51,7 +53,7 @@ mat-card {
                 margin-top: 5px;
             }
             color: grey;
-            width: 25%;
+            width: 10%;
             @include text-truncate();
             text-align: left;
             font-size: smaller;
