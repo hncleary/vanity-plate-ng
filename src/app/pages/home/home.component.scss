@@ -2,16 +2,27 @@
 
 :host {
     @include flex-col-center();
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    position: relative;
 }
 
-mat-card {
-    @include flex-row-center();
-    padding: 20px;
+$search-box-height: 100px;
+
+.card-above { 
+    height: $search-box-height;
+    @include flex-col-center();
 }
 
 .user-list-table { 
-    width: 375px;
-    height: 500px;
+    @include flex-row-center();
+
+    width: 85%;
+    min-width: 350px;
+    max-width: 500px;
+    height: calc(100vh - $search-box-height - 200px);
+
     overflow: auto;
     display: flex;
     flex-direction: column;

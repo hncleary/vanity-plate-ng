@@ -1,6 +1,7 @@
 @import 'src/styles.scss';
 
 :host {
+    min-width: 300px;
     overflow-x: hidden;
     @include flex-col-center();
     .app-divider { 
@@ -13,15 +14,15 @@
         $header-height: 150px;
         $footer-height: 40px;
         .header {
+            height: calc($header-height - 40px);
+            padding-top: 30px;
+            padding-bottom: 10px;
+            width: 100%;
             @include flex-col-center();
             gap: 5px;
-            padding: 15px;
             p {
                 font-weight: bold;
                 font-size: 24px;
-            }
-            app-display-plate { 
-                min-width: 360px;
             }
         }
         .body {
@@ -29,14 +30,16 @@
             flex-direction: row;
             $side-nav-width: 100px;
             padding-bottom: 25px;
+            position: relative;
             .content-container {
                 @include flex-col-center();
                 width: calc(100%);
-                height: 100%;
+                height: calc(100%);
+                position: relative;
             }
         }
-        // .footer {
-        //     height: calc($footer-height - 2px);
-        // }
+        .footer {
+            height: calc($footer-height - 2px);
+        }
     }
 }

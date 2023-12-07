@@ -9,14 +9,14 @@
 
 .plate-container { 
     @include flex-row-center();
-    margin-top: 21px;
+    margin-top: 15px;
     width: fit-content;
     min-width: 175px;
     position: relative;
     img { 
         position: absolute;
         height: 165%;
-        margin-bottom: 8px;
+        margin-bottom: 15px;
 
         &.left-plate { 
             left: 0px;
@@ -38,11 +38,13 @@
         z-index: 3;
         font-family: 'dealerplate';
         color: #5e67a4;
-        font-size: 45px;
+        font-size: 40px;
         font-weight: bold;
         text-shadow: -2px 2px 4px rgba(0, 0, 0, 0.2), 
         2px -2px 0 rgba(255, 255, 255, 0.5); 
         position: relative;
+        @include text-truncate();
+        text-align: center;
     }
     .header-text { 
         position: absolute;
@@ -50,6 +52,6 @@
         font-family: 'rageitalic';
         color: #d2251a;
         font-size: 16px;
-        top: -15px;
+        top: -19px;
     }
 }

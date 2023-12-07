@@ -1,6 +1,7 @@
-<h3>Currently Registered Users:</h3>
-
-<app-search-input [(value)]="filterValue" [inputWidth]="'350px'"></app-search-input>
+<div class="card-above">
+    <h3>Currently Registered Users:</h3>
+    <app-search-input [(value)]="filterValue" [inputWidth]="'300px'"></app-search-input>
+</div>
 
 <mat-card class="user-list-table">
     <ng-container *ngFor="let user of sumCollection.sums | genericFilter:filterValue">
