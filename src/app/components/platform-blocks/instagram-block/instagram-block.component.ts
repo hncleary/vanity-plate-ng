@@ -8,4 +8,5 @@ import { InstagramStats } from 'src/app/service/vanity-db.service';
 })
 export class InstagramBlockComponent {
   @Input() stats: InstagramStats = new InstagramStats();
+  public imgSrc = 'assets/instagram.png';
 }

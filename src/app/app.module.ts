@@ -28,9 +28,10 @@ import { FormsModule } from '@angular/forms';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { GenericFilterPipe } from './pipes/generic-filter.pipe';
 import { NumberTruncatePipe } from './pipes/number-truncate.pipe';
+import { DisplayPlateComponent } from './components/display-plate/display-plate.component';
 
 @NgModule({
-    declarations: [AppComponent, HomeComponent, AboutComponent, UserProfileComponent, HeaderNavButtonsComponent, StatsBlockComponent, YoutubeBlockComponent, InstagramBlockComponent, SpotifyBlockComponent, NewgroundsBlockComponent, SoundcloudBlockComponent, TwitterBlockComponent, TwitchBlockComponent, TiktokBlockComponent, SearchInputComponent, GenericFilterPipe, NumberTruncatePipe],
+    declarations: [AppComponent, HomeComponent, AboutComponent, UserProfileComponent, HeaderNavButtonsComponent, StatsBlockComponent, YoutubeBlockComponent, InstagramBlockComponent, SpotifyBlockComponent, NewgroundsBlockComponent, SoundcloudBlockComponent, TwitterBlockComponent, TwitchBlockComponent, TiktokBlockComponent, SearchInputComponent, GenericFilterPipe, NumberTruncatePipe, DisplayPlateComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
