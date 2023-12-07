@@ -39,7 +39,13 @@
             }
         }
         .footer {
-            height: calc($footer-height - 2px);
+            height: calc($footer-height);
+            @include flex-row-center();
+            gap: 10px;
+            p { 
+                color: grey;
+                font-size: 14px;
+            }
         }
     }
 }
