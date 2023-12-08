@@ -21,7 +21,7 @@ $search-box-height: 100px;
     width: 85%;
     min-width: 350px;
     max-width: 500px;
-    height: calc(100vh - $search-box-height - 200px);
+    height: calc(100vh - $search-box-height - 300px);
 
     overflow: auto;
     display: flex;
@@ -58,7 +58,7 @@ $search-box-height: 100px;
         }
         .follower-count {
             @include flex-row-center();
-            justify-content: start;
+            justify-content: flex-start;
             mat-icon { 
                 font-size: 20px;
                 margin-top: 5px;

@@ -16,6 +16,15 @@ export class UserProfileComponent {
     public userStats: VanityPlateProfileStats = new VanityPlateProfileStats();
     public userSum: VanityPlateSum = new VanityPlateSum();
 
+    public youtubeLogo = 'assets/youtube.png';
+    public instagramLogo = 'assets/instagram.png';
+    public spotifyLogo = 'assets/spotify.png';
+    public newgroundsLogo = 'assets/newgrounds.png';
+    public soundcloudLogo = 'assets/soundcloud.png';
+    public twitterLogo = 'assets/twitter.png';
+    public twitchLogo = 'assets/twitch.png';
+    public tiktokLogo = 'assets/tiktok.png';
+
     constructor(
         private _router: Router,
         private _dbSvc: VanityDbService,

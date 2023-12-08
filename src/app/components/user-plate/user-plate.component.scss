@@ -1,0 +1,61 @@
+@import 'src/styles.scss';
+
+:host {
+    app-display-plate {
+        min-width: 50px;
+        margin-top: 5px;
+    }
+}
+.user-plate-container {
+    border-radius: 20px;
+    width: 365px;
+    $border-color: #5e67a4;
+    .header-row { 
+        background-color: $border-color;
+        border-radius: 50px 50px  0px 0px ;
+        height: 15px;
+    }
+    .top-row {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        @include flex-row-center();
+        justify-content: center;
+        gap: 15px;
+        .profile-image {
+            width: 100px;
+            border-radius: 50%;
+        }
+    }
+    .info-row {
+        @include flex-row-center();
+        gap: 10px;
+        .display-name {
+            font-weight: bold;
+            color: grey;
+        }
+    }
+    .follower-count {
+        @include flex-row-center();
+        font-weight: bold;
+        font-size: 18px;
+        height: 25px;
+        padding-bottom: 10px;
+    }
+    .stats-objects {
+        border: solid red 1px;
+        min-height: 100px;
+
+    }
+    .user-link { 
+        background-color: $border-color;
+        border-radius: 0px 0px 50px 50px;
+        padding-left: 15px;
+        padding-right: 15px;
+        float: right;
+        p { 
+            color: white;
+            float: right;
+            font-weight:500;
+        }
+    }
+}

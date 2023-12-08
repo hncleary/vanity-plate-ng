@@ -9,43 +9,67 @@
     @include flex-col-center();
     padding-top: 15px;
     width: 100%;
-    .user-sum-container { 
-        @include flex-row-center();
-        app-stats-block { 
-            width: 50%;
-            min-width: 250px;
-        }
-        .user-top-block { 
-            margin-top: 15px;
-            padding: 15px;
-            @include flex-col-center();
-            gap: 10px;
-            .display-name { 
-                font-weight: bold;
-                font-size: large;
-            }
-            .username-id { 
-                font-weight: small;
-                color: grey;
-            }
-            .follower-count { 
-                font-size:medium;
-            }
-        }
-    }
-    .platform-title {
-        font-weight: bold;
-        @include flex-row-center();
-        padding: 20px;
-    }
-    .stats-block-container { 
+    .accounts-container { 
+        padding-top: 10px;
+        padding-bottom: 10px;
         display: flex;
-        flex-direction: row;
+        gap: 10px;
         flex-wrap: wrap;
-        width: 100%;
-        height: 100%;
-        gap: 20px;
+        flex-direction: row;
         justify-content: center;
+        align-items: center;
+        max-width: 1400px;
+
+        .details-items-container { 
+            padding-top: 3px;
+            padding-left: 10px;
+            padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            width: 135px;
+        }
+        .details-item { 
+            margin-top: -6px;
+            &.primary { 
+                color: black;
+                font-weight: bold;
+            }
+            p { 
+                @include text-truncate();
+                position: relative;
+            }
+            @include flex-row-center();
+            gap: 5px;
+            justify-content: flex-start;
+            color: grey;
+            font-size: 14px;
+            mat-icon { 
+                color: grey;
+                font-size: 19px;
+                margin-top: 5px;
+            }
+        }
+        .newgrounds-counts-row { 
+            @include flex-row-center();
+            justify-content: flex-start;
+            gap: 6px;
+            p {
+                color: grey;
+                font-size: 12px;
+                margin-left: -5px;
+            }
+            mat-icon { 
+                color: grey;
+                font-size: 16px;
+                margin-top: 5px;
+                margin-right: -5px;
+            }
+            .count { 
+                @include flex-row-center();
+            }
+        }
     }
 
 }

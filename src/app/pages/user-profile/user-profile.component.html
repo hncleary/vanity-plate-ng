@@ -1,130 +1,231 @@
 <div class="stats-container">
-    <app-display-plate [displayText]="userStats.displayName"></app-display-plate>
-    <!-- User Sum Container -->
-    <div class="user-sum-container" *ngIf="!loading">
-        <app-stats-block>
-            <div class="user-top-block">
-                <p class="display-name">{{ userStats.displayName }}</p>
-                <p class="username-id">/u/{{ userStats.id }}</p>
-                <p class="follower-count">Total Followers: {{ userSum.totalFollowers | number }}</p>
-            </div>
-        </app-stats-block>
+    <!-- User Profile Summary Plate -->
+    <ng-container *ngIf="!loading">
+        <app-user-plate [userStats]="userStats" [userSum]="userSum"></app-user-plate>
+    </ng-container>
+    <!-- Individual Accounts -->
+    <div class="accounts-container">
+        <!-- Youtube -->
+        <ng-container *ngFor="let youtube of userStats.youtubeStats">
+            <app-account-block
+                [accountImg]="youtube.iconBas64"
+                [backupImg]="youtubeLogo"
+                [link]="youtube.link"
+                [accountType]="'youtube'">
+                <div class="details-items-container">
+                    <div class="details-item primary">
+                        <mat-icon>account_circle</mat-icon>
+                        <p appTruncationTip>{{ youtube.displayName }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>badge</mat-icon>
+                        <p appTruncationTip>@{{ youtube.handle }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>groups</mat-icon>
+                        <p appTruncationTip>{{ youtube.subscribers | number }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>visibility</mat-icon>
+                        <p appTruncationTip>{{ youtube.totalViews | number }}</p>
+                    </div>
+                </div>
+            </app-account-block>
+        </ng-container>
+        <!-- Instagram -->
+        <ng-container *ngFor="let instagram of userStats.instaStats">
+            <app-account-block
+                [accountImg]="instagram.iconBase64"
+                [backupImg]="instagramLogo"
+                [link]="instagram.link"
+                [accountType]="'instagram'">
+                <div class="details-items-container">
+                    <div class="details-item primary">
+                        <mat-icon>account_circle</mat-icon>
+                        <p appTruncationTip>{{ instagram.displayName }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>badge</mat-icon>
+                        <p appTruncationTip>@{{ instagram.handle }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>groups</mat-icon>
+                        <p appTruncationTip>{{ instagram.followerCount | number }} Followers</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>person_add</mat-icon>
+                        <p appTruncationTip>{{ instagram.followingCount | number }} Following</p>
+                    </div>
+                </div>
+            </app-account-block>
+        </ng-container>
+        <!-- Spotify -->
+        <ng-container *ngFor="let spotify of userStats.spotifyStats">
+            <app-account-block
+                [accountImg]="spotifyLogo"
+                [backupImg]="spotifyLogo"
+                [link]="spotify.link"
+                [accountType]="'spotify'">
+                <div class="details-items-container">
+                    <div class="details-item primary">
+                        <mat-icon>account_circle</mat-icon>
+                        <p>{{ spotify.displayName }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>groups</mat-icon>
+                        <p appTruncationTip>{{ spotify.monthlyListeners | number }} Monthly Listeners</p>
+                    </div>
+                </div>
+            </app-account-block>
+        </ng-container>
+        <!-- Newgrounds -->
+        <ng-container *ngFor="let newgrounds of userStats.newgroundsStats">
+            <app-account-block
+                [accountImg]="newgroundsLogo"
+                [backupImg]="newgroundsLogo"
+                [link]="newgrounds.link"
+                [accountType]="'newgrounds'">
+                <div class="details-items-container">
+                    <div class="details-item primary">
+                        <mat-icon>account_circle</mat-icon>
+                        <p>{{ newgrounds.displayName }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>groups</mat-icon>
+                        <p>{{ newgrounds.fans | number }}</p>
+                    </div>
+                    <div class="newgrounds-counts-row">
+                        <!-- movies -->
+                        <div class="count">
+                            <mat-icon>movie</mat-icon>
+                            <p>{{ newgrounds.moviesCount }}</p>
+                        </div>
+                        <!-- music tracks -->
+                        <div class="count">
+                            <mat-icon>audiotrack</mat-icon>
+                            <p>{{ newgrounds.audioCount }}</p>
+                        </div>
+                        <!-- art -->
+                        <div class="count">
+                            <mat-icon>image</mat-icon>
+                            <p>{{ newgrounds.artCount }}</p>
+                        </div>
+                        <!-- games -->
+                        <div class="count">
+                            <mat-icon>sports_esports</mat-icon>
+                            <p>{{ newgrounds.gamesCount }}</p>
+                        </div>
+                    </div>
+                </div>
+            </app-account-block>
+        </ng-container>
+        <!-- SoundCloud -->
+        <ng-container *ngFor="let soundcloud of userStats.soundcloudStats">
+            <app-account-block
+                [accountImg]="soundcloud.iconBas64"
+                [backupImg]="soundcloudLogo"
+                [link]="soundcloud.link"
+                [accountType]="'soundcloud'">
+                <div class="details-items-container">
+                    <div class="details-item primary">
+                        <mat-icon>account_circle</mat-icon>
+                        <p appTruncationTip>{{ soundcloud.displayName }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>badge</mat-icon>
+                        <p appTruncationTip>@{{ soundcloud.username }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>groups</mat-icon>
+                        <p appTruncationTip>{{ soundcloud.followers | number }} Followers</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>audiotrack</mat-icon>
+                        <p appTruncationTip>{{ soundcloud.tracks | number }} Tracks</p>
+                    </div>
+                </div>
+            </app-account-block>
+        </ng-container>
+        <!-- Twitter -->
+        <ng-container *ngFor="let twitter of userStats.twitterStats">
+            <app-account-block
+                [accountImg]="twitter.iconBase64"
+                [backupImg]="twitterLogo"
+                [link]="twitter.link"
+                [accountType]="'twitter'">
+                <div class="details-items-container">
+                    <div class="details-item primary">
+                        <mat-icon>account_circle</mat-icon>
+                        <p appTruncationTip>{{ twitter.displayName }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>badge</mat-icon>
+                        <p appTruncationTip>@{{ twitter.handle }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>groups</mat-icon>
+                        <p appTruncationTip>{{ twitter.followerCount | number }} Followers</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>person_add</mat-icon>
+                        <p appTruncationTip>{{ twitter.followingCount | number }} Following</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>newspaper</mat-icon>
+                        <p appTruncationTip>{{ twitter.totalTweets | number }} Tweets</p>
+                    </div>
+                </div>
+            </app-account-block>
+        </ng-container>
+        <!-- Twitch -->
+        <ng-container *ngFor="let twitch of userStats.twitchStats">
+            <app-account-block
+                [accountImg]="twitch.iconBas64"
+                [backupImg]="twitchLogo"
+                [link]="twitch.link"
+                [accountType]="'twitch'">
+                <div class="details-items-container">
+                    <div class="details-item primary">
+                        <mat-icon>account_circle</mat-icon>
+                        <p appTruncationTip>{{ twitch.displayName }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>badge</mat-icon>
+                        <p appTruncationTip>@{{ twitch.username }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>groups</mat-icon>
+                        <p appTruncationTip>{{ twitch.followers | number }} Followers</p>
+                    </div>
+                </div>
+            </app-account-block>
+        </ng-container>
+        <!-- Tik Tok -->
+        <ng-container *ngFor="let tiktok of userStats.tiktokStats">
+            <app-account-block
+                [accountImg]="tiktok.iconBase64"
+                [backupImg]="tiktokLogo"
+                [link]="tiktok.link"
+                [accountType]="'tiktok'">
+                <div class="details-items-container">
+                    <div class="details-item primary">
+                        <mat-icon>account_circle</mat-icon>
+                        <p appTruncationTip>{{ tiktok.displayName }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>badge</mat-icon>
+                        <p appTruncationTip>@{{ tiktok.handle }}</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>groups</mat-icon>
+                        <p appTruncationTip>{{ tiktok.followerCount| number }} Followers</p>
+                    </div>
+                    <div class="details-item">
+                        <mat-icon>groups</mat-icon>
+                        <p appTruncationTip>{{ tiktok.likes| number }} Likes Received</p>
+                    </div>
+                </div>
+            </app-account-block>
+        </ng-container>
     </div>
-    
-    <!-- Youtube -->
-    <ng-container *ngIf="!!userStats.youtubeStats.length">
-        <div class="platform-title">
-            <p>YouTube</p>
-        </div>
-        <div class="stats-block-container">
-            <ng-container *ngFor="let youtube of userStats.youtubeStats">
-                <app-stats-block>
-                <app-youtube-block [stats]="youtube"></app-youtube-block>
-                </app-stats-block>
-            </ng-container>
-        </div>
-    </ng-container>
-
-
-    <!-- Instagram -->
-    <ng-container *ngIf="!!userStats.instaStats.length">
-        <div class="platform-title">
-            <p>Instagram</p>
-        </div>
-        <div class="stats-block-container">
-            <ng-container *ngFor="let instagram of userStats.instaStats">
-                <app-stats-block>
-                    <app-instagram-block [stats]="instagram"></app-instagram-block>
-                </app-stats-block>
-            </ng-container>
-        </div>
-    </ng-container>
-
-
-    <!-- Spotify -->
-    <ng-container *ngIf="!!userStats.spotifyStats.length">
-        <div class="platform-title">
-            <p>Spotify</p>
-        </div>
-        <div class="stats-block-container">
-            <ng-container *ngFor="let spotify of userStats.spotifyStats">
-                <app-stats-block>
-                    <app-spotify-block [stats]="spotify"></app-spotify-block>
-                </app-stats-block>
-            </ng-container>
-        </div>
-    </ng-container>
-
-
-    <!-- Newgrounds -->
-    <ng-container *ngIf="!!userStats.newgroundsStats.length">
-        <div class="platform-title">
-            <p>Newgrounds</p>
-        </div>
-        <div class="stats-block-container">
-            <ng-container *ngFor="let newgrounds of userStats.newgroundsStats">
-                <app-stats-block>
-                    <app-newgrounds-block [stats]="newgrounds"></app-newgrounds-block>
-                </app-stats-block>
-            </ng-container>
-        </div>
-    </ng-container>
-
-    <!-- SoundCloud -->
-    <ng-container *ngIf="!!userStats.soundcloudStats.length">
-        <div class="platform-title">
-            <p>SoundCloud</p>
-        </div>
-        <div class="stats-block-container">
-            <ng-container *ngFor="let soundcloud of userStats.soundcloudStats">
-                <app-stats-block>
-                    <app-soundcloud-block [stats]="soundcloud"></app-soundcloud-block>
-                </app-stats-block>
-            </ng-container>
-        </div>
-    </ng-container>
-
-
-    <!-- Twitter -->
-    <ng-container *ngIf="!!userStats.twitterStats.length">
-        <div class="platform-title">
-            <p>Twitter</p>
-        </div>
-        <div class="stats-block-container">
-            <ng-container *ngFor="let twitter of userStats.twitterStats">
-                <app-stats-block>
-                    <app-twitter-block [stats]="twitter"></app-twitter-block>
-                </app-stats-block>
-            </ng-container>
-        </div>
-    </ng-container>
-
-    <!-- Twitter -->
-    <ng-container *ngIf="!!userStats.twitchStats.length">
-        <div class="platform-title">
-            <p>Twitch</p>
-        </div>
-        <div class="stats-block-container">
-            <ng-container *ngFor="let twitch of userStats.twitchStats">
-                <app-stats-block>
-                    <app-twitch-block [stats]="twitch"></app-twitch-block>
-                </app-stats-block>
-            </ng-container>
-        </div>
-    </ng-container>
-
-    <!-- Tik Tok -->
-    <ng-container *ngIf="!!userStats.tiktokStats.length">
-        <div class="platform-title">
-            <p>Tik Tok</p>
-        </div>
-        <div class="stats-block-container">
-            <ng-container *ngFor="let tiktok of userStats.tiktokStats">
-                <app-stats-block>
-                    <app-tiktok-block [stats]="tiktok"></app-tiktok-block>
-                </app-stats-block>
-            </ng-container>
-        </div>
-    </ng-container>
-
 </div>

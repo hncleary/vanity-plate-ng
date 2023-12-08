@@ -1,0 +1,61 @@
+@import 'src/styles.scss';
+
+mat-divider {
+    height: 75px;
+    margin-right: 12px;
+    margin-left: 18px;
+    opacity: 0.5;
+}
+
+$block-height: 100px;
+.account-card {
+    width: 350px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    @include flex-row-center();
+
+    .account-image-container {
+        @include flex-col-center();
+        position: relative;
+        .account-img {
+            margin-left: 5px;
+            height: calc($block-height - 25px);
+            border-radius: 30px;
+            &.round-less { 
+                border-radius: 12px;
+            }
+        }
+        .account-type-logo {
+            width: 30px;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 5px;
+            bottom: -10px;
+            right: -9px;
+            box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .2), 0 1px 3px 0 rgba(0, 0, 0, .2);
+        }
+    }
+    .account-details {
+        height: $block-height;
+        width: calc(100% - 150px);
+    }
+    .link-box {
+        height: $block-height;
+        @include flex-col-center();
+        gap: 5px;
+        button {
+            background-color: #444444;
+            min-width: 0px;
+            margin-bottom: 10px;
+            padding: 8px;
+            @include flex-row-center();
+            mat-icon {
+                color: white;
+                margin: 0px;
+            }
+        }
+    }
+}

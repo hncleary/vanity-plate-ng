@@ -1,12 +1,10 @@
 .card {
     background: white;
-    border-radius: 30px;
-    box-shadow: 5px 5px 15px #bebebe,
-               -5px -5px 15px #ffffff;
     transition: 0.2s ease-in-out;
 
     &:hover {
         cursor: pointer;
+
         // box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
     }
 }

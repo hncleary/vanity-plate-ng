@@ -14,24 +14,34 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { HeaderNavButtonsComponent } from './components/header-nav-buttons/header-nav-buttons.component';
 import { MatButtonModule } from '@angular/material/button';
 import { StatsBlockComponent } from './components/stats-block/stats-block.component';
-import { YoutubeBlockComponent } from './components/platform-blocks/youtube-block/youtube-block.component';
-import { InstagramBlockComponent } from './components/platform-blocks/instagram-block/instagram-block.component';
-import { SpotifyBlockComponent } from './components/platform-blocks/spotify-block/spotify-block.component';
-import { NewgroundsBlockComponent } from './components/platform-blocks/newgrounds-block/newgrounds-block.component';
-import { SoundcloudBlockComponent } from './components/platform-blocks/soundcloud-block/soundcloud-block.component';
-import { TwitterBlockComponent } from './components/platform-blocks/twitter-block/twitter-block.component';
-import { TwitchBlockComponent } from './components/platform-blocks/twitch-block/twitch-block.component';
-import { TiktokBlockComponent } from './components/platform-blocks/tiktok-block/tiktok-block.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { GenericFilterPipe } from './pipes/generic-filter.pipe';
 import { NumberTruncatePipe } from './pipes/number-truncate.pipe';
 import { DisplayPlateComponent } from './components/display-plate/display-plate.component';
+import { UserPlateComponent } from './components/user-plate/user-plate.component';
+import { AccountBlockComponent } from './components/account-block/account-block.component';
+import { TruncationTipDirective } from './directives/truncation-tip.directive';
+import {MatTooltip, MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
-    declarations: [AppComponent, HomeComponent, AboutComponent, UserProfileComponent, HeaderNavButtonsComponent, StatsBlockComponent, YoutubeBlockComponent, InstagramBlockComponent, SpotifyBlockComponent, NewgroundsBlockComponent, SoundcloudBlockComponent, TwitterBlockComponent, TwitchBlockComponent, TiktokBlockComponent, SearchInputComponent, GenericFilterPipe, NumberTruncatePipe, DisplayPlateComponent],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        AboutComponent,
+        UserProfileComponent,
+        HeaderNavButtonsComponent,
+        StatsBlockComponent,
+        SearchInputComponent,
+        GenericFilterPipe,
+        NumberTruncatePipe,
+        DisplayPlateComponent,
+        UserPlateComponent,
+        AccountBlockComponent,
+        TruncationTipDirective,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -45,9 +55,11 @@ import { DisplayPlateComponent } from './components/display-plate/display-plate.
         MatDividerModule,
         MatFormFieldModule,
         MatInputModule,
-        FormsModule
+        FormsModule,
+        MatButtonModule,
+        MatTooltipModule
     ],
-    providers: [],
+    providers: [MatTooltip],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

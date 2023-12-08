@@ -1,0 +1,16 @@
+<mat-card class="account-card">
+    <div class="account-image-container">
+        <img class="account-type-logo" *ngIf="!!accountImg" [src]="accountImgSrc" />
+        <img class="account-img" [ngClass]="{'round-less': roundLess}" [src]="!!accountImg ? accountImg : backupImg"/>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="account-details">
+        <ng-content></ng-content>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="link-box" *ngIf="!!link">
+        <button mat-raised-button (click)="openLink()">
+            <mat-icon>open_in_new</mat-icon>
+        </button>
+    </div>
+</mat-card>

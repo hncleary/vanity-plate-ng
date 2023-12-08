@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InstagramBlockComponent } from './instagram-block.component';
+import { UserPlateComponent } from './user-plate.component';
 
-describe('InstagramBlockComponent', () => {
-  let component: InstagramBlockComponent;
-  let fixture: ComponentFixture<InstagramBlockComponent>;
+describe('UserPlateComponent', () => {
+  let component: UserPlateComponent;
+  let fixture: ComponentFixture<UserPlateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InstagramBlockComponent ]
+      declarations: [ UserPlateComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InstagramBlockComponent);
+    fixture = TestBed.createComponent(UserPlateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

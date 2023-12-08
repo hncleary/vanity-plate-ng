@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TwitterBlockComponent } from './twitter-block.component';
+import { AccountBlockComponent } from './account-block.component';
 
-describe('TwitterBlockComponent', () => {
-  let component: TwitterBlockComponent;
-  let fixture: ComponentFixture<TwitterBlockComponent>;
+describe('AccountBlockComponent', () => {
+  let component: AccountBlockComponent;
+  let fixture: ComponentFixture<AccountBlockComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TwitterBlockComponent ]
+      declarations: [ AccountBlockComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TwitterBlockComponent);
+    fixture = TestBed.createComponent(AccountBlockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
