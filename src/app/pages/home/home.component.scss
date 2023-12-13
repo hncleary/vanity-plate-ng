@@ -21,7 +21,7 @@ $search-box-height: 100px;
     width: 85%;
     min-width: 350px;
     max-width: 500px;
-    height: calc(100vh - $search-box-height - 300px);
+    height: calc(100vh - $search-box-height - 350px);
 
     overflow: auto;
     display: flex;

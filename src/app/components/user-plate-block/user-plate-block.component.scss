@@ -1,0 +1,26 @@
+@import 'src/styles.scss';
+
+mat-card { 
+    width: 150px;
+    height: 65px;
+    background-color: whitesmoke;
+    @include flex-row-center();
+    padding: 3px;
+    .platform-icon { 
+        width: 45px;
+        height: 100%;
+        padding-left: 5px;
+        @include flex-col-center();
+        mat-icon { 
+            color: #4b4b4b;
+            width: 30px !important;
+            height: 30px !important;
+        }
+    }
+    .platform-summary { 
+        width: calc(100% - 45px);
+        height: 100%;
+        padding-left: 10px;
+        @include flex-col-center();
+    }
+}

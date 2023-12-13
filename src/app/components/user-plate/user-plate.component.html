@@ -1,19 +1,138 @@
 <mat-card class="user-plate-container">
     <div class="header-row"></div>
     <div class="top-row">
-        <img id="profileImage" *ngIf="!!userStats.youtubeStats.length" class="profile-image" [src]="userStats.youtubeStats[0].iconBas64">
+        <img
+            id="profileImage"
+            *ngIf="!!userStats.youtubeStats.length"
+            class="profile-image"
+            [src]="userStats.youtubeStats[0].iconBas64" />
         <app-display-plate [displayText]="userStats.id"></app-display-plate>
     </div>
     <div class="info-row">
-        <p class="display-name">{{userStats.displayName}}</p>
+        <p class="display-name">{{ userStats.displayName }}</p>
     </div>
     <div class="follower-count">
-        <p>{{userSum.totalFollowers | number}} Followers</p>
-    </div>  
-    <!-- <div class="stats-objects">
-    </div> -->
-    <div class="user-link">
-        <p>vanityplate.social/u/{{userStats.id}}</p>
+        <p>{{ userSum.totalFollowers | number }} Followers</p>
     </div>
-    
+    <div class="stats-objects">
+        <!-- Youtube -->
+        <ng-container *ngIf="!!userStats.youtubeStats.length">
+            <app-user-plate-block [accountType]="'youtube'">
+                <div class="app-block-rows-container">
+                    <div class="app-block-row primary">
+                        <p>Youtube</p>
+                    </div>
+                    <div class="app-block-row">
+                        <mat-icon>groups</mat-icon>
+                        <p>{{ youtubeFollowers | numberTruncate }}</p>
+                    </div>
+                    <div class="app-block-row">
+                        <mat-icon>visibility</mat-icon>
+                        <p>{{ youtubeViews | numberTruncate }}</p>
+                    </div>
+                </div>
+            </app-user-plate-block>
+        </ng-container>
+        <!-- Instagram -->
+        <ng-container *ngIf="!!userStats.instaStats.length">
+            <app-user-plate-block [accountType]="'instagram'">
+                <div class="app-block-rows-container">
+                    <div class="app-block-row primary">
+                        <p>Instagram</p>
+                    </div>
+                    <div class="app-block-row">
+                        <mat-icon>groups</mat-icon>
+                        <p>{{ instagramFollowers | numberTruncate }}</p>
+                    </div>
+                </div>
+            </app-user-plate-block>
+        </ng-container>
+        <!-- Twitter -->
+        <ng-container *ngIf="!!userStats.twitterStats.length">
+            <app-user-plate-block [accountType]="'twitter'">
+                <div class="app-block-rows-container">
+                    <div class="app-block-row primary">
+                        <p>Twitter</p>
+                    </div>
+                    <div class="app-block-row">
+                        <mat-icon>groups</mat-icon>
+                        <p>{{ twitterFollowers | numberTruncate }}</p>
+                    </div>
+                </div>
+            </app-user-plate-block>
+        </ng-container>
+        <!-- Spotify -->
+        <ng-container *ngIf="!!userStats.spotifyStats.length">
+            <app-user-plate-block [accountType]="'spotify'">
+                <div class="app-block-rows-container">
+                    <div class="app-block-row primary">
+                        <p>Spotify</p>
+                    </div>
+                    <div class="app-block-row">
+                        <mat-icon>groups</mat-icon>
+                        <p>{{ spotifyFollowers | numberTruncate }}</p>
+                    </div>
+                </div>
+            </app-user-plate-block>
+        </ng-container>
+        <!-- Newgrounds -->
+        <ng-container *ngIf="!!userStats.newgroundsStats.length">
+            <app-user-plate-block [accountType]="'newgrounds'">
+                <div class="app-block-rows-container">
+                    <div class="app-block-row primary">
+                        <p>Newgrounds</p>
+                    </div>
+                    <div class="app-block-row">
+                        <mat-icon>groups</mat-icon>
+                        <p>{{ newgroundsFollowers | numberTruncate }}</p>
+                    </div>
+                </div>
+            </app-user-plate-block>
+        </ng-container>
+        <!-- SoundCloud -->
+        <ng-container *ngIf="!!userStats.soundcloudStats.length">
+            <app-user-plate-block [accountType]="'soundcloud'">
+                <div class="app-block-rows-container">
+                    <div class="app-block-row primary">
+                        <p>SoundCloud</p>
+                    </div>
+                    <div class="app-block-row">
+                        <mat-icon>groups</mat-icon>
+                        <p>{{ soundcloudFollowers | numberTruncate }}</p>
+                    </div>
+                </div>
+            </app-user-plate-block>
+        </ng-container>
+        <!-- Twitch -->
+        <ng-container *ngIf="!!userStats.twitchStats.length">
+            <app-user-plate-block [accountType]="'twitch'">
+                <div class="app-block-rows-container">
+                    <div class="app-block-row primary">
+                        <p>Twitch</p>
+                    </div>
+                    <div class="app-block-row">
+                        <mat-icon>groups</mat-icon>
+                        <p>{{ twitchFollowers | numberTruncate }}</p>
+                    </div>
+                </div>
+            </app-user-plate-block>
+        </ng-container>
+        <!-- TikTok -->
+        <ng-container *ngIf="!!userStats.tiktokStats.length">
+            <app-user-plate-block [accountType]="'tiktok'">
+                <div class="app-block-rows-container">
+                    <div class="app-block-row primary">
+                        <p>TikTok</p>
+                    </div>
+                    <div class="app-block-row">
+                        <mat-icon>groups</mat-icon>
+                        <p>{{ tiktokFollowers | numberTruncate }}</p>
+                    </div>
+                </div>
+            </app-user-plate-block>
+        </ng-container>
+    </div>
+    <div class="user-link">
+        <p>vanityplate.social/u/{{ userStats.id }}</p>
+    </div>
 </mat-card>

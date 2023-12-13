@@ -10,9 +10,9 @@
     border-radius: 20px;
     width: 365px;
     $border-color: #5e67a4;
-    .header-row { 
+    .header-row {
         background-color: $border-color;
-        border-radius: 50px 50px  0px 0px ;
+        border-radius: 50px 50px 0px 0px;
         height: 15px;
     }
     .top-row {
@@ -42,20 +42,44 @@
         padding-bottom: 10px;
     }
     .stats-objects {
-        border: solid red 1px;
-        min-height: 100px;
+        @include flex-row-center();
+        flex-wrap: wrap;
+        padding: 15px;
+        gap: 10px;
 
+        .app-block-rows-container {
+            width: 100%;
+            @include flex-col-center();
+            .app-block-row { 
+                width: 100%;
+                @include flex-row-center();
+                justify-content: flex-start;
+                color: grey;
+                font-size: 12px;
+                &.primary { 
+                    font-weight: bold;
+                }
+                mat-icon { 
+                    font-size: 16px;
+                    margin-bottom: -6px;
+                    margin-right: -5px;
+                }
+                p { 
+                    margin-bottom: -5px;
+                }
+            }
+        }
     }
-    .user-link { 
+    .user-link {
         background-color: $border-color;
         border-radius: 0px 0px 50px 50px;
         padding-left: 15px;
         padding-right: 15px;
         float: right;
-        p { 
+        p {
             color: white;
             float: right;
-            font-weight:500;
+            font-weight: 500;
         }
     }
 }

@@ -1,0 +1,11 @@
+<mat-card>
+    <div class="platform-icon">
+        <!--  -->
+        <ng-container *ngIf="!!accountType">
+            <mat-icon [svgIcon]="accountType"></mat-icon>
+        </ng-container>
+    </div>
+    <div class="platform-summary">
+        <ng-content></ng-content>
+    </div>
+</mat-card>

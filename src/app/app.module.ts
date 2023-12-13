@@ -6,7 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,7 +24,8 @@ import { DisplayPlateComponent } from './components/display-plate/display-plate.
 import { UserPlateComponent } from './components/user-plate/user-plate.component';
 import { AccountBlockComponent } from './components/account-block/account-block.component';
 import { TruncationTipDirective } from './directives/truncation-tip.directive';
-import {MatTooltip, MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
+import { UserPlateBlockComponent } from './components/user-plate-block/user-plate-block.component';
 
 @NgModule({
     declarations: [
@@ -41,6 +42,7 @@ import {MatTooltip, MatTooltipModule} from '@angular/material/tooltip';
         UserPlateComponent,
         AccountBlockComponent,
         TruncationTipDirective,
+        UserPlateBlockComponent,
     ],
     imports: [
         BrowserModule,
@@ -57,9 +59,9 @@ import {MatTooltip, MatTooltipModule} from '@angular/material/tooltip';
         MatInputModule,
         FormsModule,
         MatButtonModule,
-        MatTooltipModule
+        MatTooltipModule,
     ],
-    providers: [MatTooltip],
+    providers: [MatTooltip, MatIconRegistry],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
