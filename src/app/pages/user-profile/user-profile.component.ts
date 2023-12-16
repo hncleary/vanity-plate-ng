@@ -15,6 +15,7 @@ export class UserProfileComponent {
     public username = '';
     public userStats: VanityPlateProfileStats = new VanityPlateProfileStats();
     public userSum: VanityPlateSum = new VanityPlateSum();
+    public timeRetrieved = 0;
 
     public youtubeLogo = 'assets/youtube.png';
     public instagramLogo = 'assets/instagram.png';
@@ -48,6 +49,13 @@ export class UserProfileComponent {
         this.userStats = await this._dbSvc.getStatsForUser(username);
         /** Summate total follower count */
         this.userSum = this._dbSvc.getProfileStatsSummation(username, this.userStats);
+        this.getTimeRetrieved();
         this.loading = false;
     }
+
+    public getTimeRetrieved() { 
+        if(this.userStats.youtubeStats.length) { 
+          this.timeRetrieved = this.userStats.youtubeStats[0].timeRetrieved;
+        }
+      }
 }

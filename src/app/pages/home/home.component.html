@@ -3,6 +3,18 @@
     <app-search-input [(value)]="filterValue" [inputWidth]="'300px'"></app-search-input>
 </div>
 
+<mat-card class="sorting-selection">
+    <div class="sort-label">
+        <mat-icon>sort</mat-icon>
+        <p>Sort by</p>
+    </div>
+    <mat-card appearance="outlined" class="sort-option" (click)="updateSort('alpha')" [ngClass]="{'selected-item': currentSort === 'alpha'}">
+        <p>A-z</p>
+    </mat-card>
+    <mat-card appearance="outlined" class="sort-option" (click)="updateSort('popular')" [ngClass]="{'selected-item': currentSort === 'popular'}">
+        <p>Popular</p>
+    </mat-card>
+</mat-card>
 <mat-card class="user-list-table">
     <ng-container *ngFor="let user of sumCollection.sums | genericFilter:filterValue">
         <div class="user-item"  (click)="goToUserPage(user.username)">
@@ -18,4 +30,7 @@
         </div>
         <mat-divider></mat-divider>
     </ng-container>
+</mat-card>
+<mat-card class="user-list-count">
+    <p>Showing {{(sumCollection.sums | genericFilter:filterValue).length}} of {{sumCollection.sums.length}} users</p>
 </mat-card>

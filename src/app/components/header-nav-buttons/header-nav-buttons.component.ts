@@ -8,11 +8,12 @@ import { PAGE_ROUTES } from 'src/app/app-routing.module';
 })
 export class HeaderNavButtonsComponent {
     public readonly links: LinkDef[] = [
-        { icon: 'home', route: PAGE_ROUTES.HOME },
-        { icon: 'info', route: PAGE_ROUTES.ABOUT },
+        { icon: 'home', route: PAGE_ROUTES.HOME, displayName: 'Home' },
+        { icon: 'info', route: PAGE_ROUTES.ABOUT, displayName: 'About' },
     ];
 }
 export class LinkDef {
     public icon = 'home';
+    public displayName = 'Home';
     public route: string = PAGE_ROUTES.HOME;
 }

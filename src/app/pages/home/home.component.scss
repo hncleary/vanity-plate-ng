@@ -10,12 +10,18 @@
 
 $search-box-height: 100px;
 
-.card-above { 
+.card-above {
     height: $search-box-height;
     @include flex-col-center();
+    h3 {
+        color: grey;
+    }
+    app-search-input {
+        margin-top: -10px;
+    }
 }
 
-.user-list-table { 
+.user-list-table {
     @include flex-row-center();
 
     width: 85%;
@@ -27,10 +33,10 @@ $search-box-height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    mat-divider { 
+    mat-divider {
         width: calc(100% - 20px);
     }
-    .user-item { 
+    .user-item {
         width: calc(100% - 30px);
         height: 35px;
         @include flex-row-center();
@@ -38,7 +44,7 @@ $search-box-height: 100px;
         padding: 10px;
         border-radius: 5px;
         margin: 5px;
-        &:hover { 
+        &:hover {
             background-color: lightgrey;
             cursor: pointer;
         }
@@ -48,7 +54,7 @@ $search-box-height: 100px;
             font-size: 13px;
             text-align: left;
         }
-        .username { 
+        .username {
             width: 40%;
             color: grey;
             font-size: smaller;
@@ -59,7 +65,7 @@ $search-box-height: 100px;
         .follower-count {
             @include flex-row-center();
             justify-content: flex-start;
-            mat-icon { 
+            mat-icon {
                 font-size: 20px;
                 margin-top: 5px;
             }
@@ -69,9 +75,46 @@ $search-box-height: 100px;
             text-align: left;
             font-size: smaller;
         }
-        .icon { 
+        .icon {
             width: 10%;
         }
-        
     }
+    border-radius: 0 0 0 0;
+}
+.sorting-selection {
+    border-radius: 5px 5px 0 0;
+    width: 85%;
+    min-width: 350px;
+    max-width: 500px;
+    font-size: 12px;
+    color: grey;
+    height: 35px;
+    padding: 3px;
+
+    @include flex-row-center;
+    justify-content: flex-start;
+    gap: 5px;
+    .sort-label {
+        margin-right: 10px;
+        @include flex-row-center;
+        gap: 5px;
+    }
+    .sort-option {
+        border: solid lightgrey 1px;
+        padding: 3px 10px;
+        &.selected-item { 
+            background: lightgrey;
+            color: black
+        }
+    }
+}
+.user-list-count {
+    font-size: 11px;
+    color: grey;
+    padding-top: 3px;
+    @include flex-row-center;
+    width: 85%;
+    min-width: 350px;
+    max-width: 500px;
+    border-radius: 0 0 5px 5px;
 }

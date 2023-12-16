@@ -3,7 +3,7 @@
 mat-card { 
     width: 150px;
     height: 65px;
-    background-color: whitesmoke;
+    // background-color: whitesmoke;
     @include flex-row-center();
     padding: 3px;
     .platform-icon { 

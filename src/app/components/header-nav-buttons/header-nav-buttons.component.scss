@@ -3,12 +3,21 @@
 :host {
     .links-container {
         @include flex-row-center();
-        gap: 5px;
-
         padding: 5px;
         border-radius: 5px;
         button {
-            background-color: #1f1f1f;
+            &.first-button { 
+                border-radius: 5px 0 0 5px;
+            }
+            &.middle-button { 
+                border-radius: 0 0 0 0;
+            }
+            &.last-button { 
+                border-radius: 0 5px 5px 0;
+                
+            }
         }
     }
 }
+
+

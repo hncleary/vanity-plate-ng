@@ -12,6 +12,7 @@ import { VanityDbService, VanityPlateSumCollection } from 'src/app/service/vanit
 export class HomeComponent implements OnInit {
     public sumCollection: VanityPlateSumCollection = new VanityPlateSumCollection();
     public filterValue = '';
+    public currentSort: 'alpha' | 'popular' = 'alpha';
 
     constructor(
         private _router: Router,
@@ -33,5 +34,19 @@ export class HomeComponent implements OnInit {
 
     public clearFilterInput() { 
         this.filterValue = '';
+    }
+
+    public sortSumCollection() { 
+        if(this.currentSort === 'alpha') { 
+            this.sumCollection.sums = this.sumCollection.sums.sort((a, b) => a.displayName.toLowerCase() < b.displayName.toLowerCase() ? -1 : 1);
+        }
+        if(this.currentSort === 'popular') { 
+            this.sumCollection.sums = this.sumCollection.sums.sort((a, b) => a.totalFollowers > b.totalFollowers ? -1 : 1);
+        }
+    }
+
+    public updateSort(newSort: 'alpha' | 'popular') { 
+        this.currentSort = newSort;
+        this.sortSumCollection();
     }
 }

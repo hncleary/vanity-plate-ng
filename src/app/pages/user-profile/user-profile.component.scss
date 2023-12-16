@@ -7,8 +7,14 @@
 
 .stats-container {
     @include flex-col-center();
-    padding-top: 15px;
     width: 100%;
+    .timestamp { 
+        width: 100%;
+        @include flex-row-center();
+        font-size: 12px;
+        color: gray;
+        padding: 10px;
+    }
     .accounts-container { 
         padding-top: 10px;
         padding-bottom: 10px;

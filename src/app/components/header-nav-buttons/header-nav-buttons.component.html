@@ -1,8 +1,10 @@
 <div class="links-container">
-    <ng-container *ngFor="let link of links">
+    <ng-container *ngFor="let link of links; let i = index">
         <div class="link-container" [routerLink]="'./' + link.route">
-            <button mat-mini-fab>
+            <button mat-stroked-button color="light"
+                [ngClass]="{'first-button': i === 0, 'middle-button': i !== 0 && i !== links.length - 1, 'last-button': i === links.length - 1}">
                 <mat-icon>{{ link.icon }}</mat-icon>
+                {{link.displayName}}
             </button>
         </div>
         <mat-divider></mat-divider>

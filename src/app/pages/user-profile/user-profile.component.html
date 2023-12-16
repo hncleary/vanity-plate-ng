@@ -3,14 +3,15 @@
     <ng-container *ngIf="!loading">
         <app-user-plate [userStats]="userStats" [userSum]="userSum"></app-user-plate>
     </ng-container>
+    <!-- Time Retrieved -->
+    <div class="timestamp">
+        <p *ngIf="!!timeRetrieved">Stats Last Updated {{ timeRetrieved | date: 'medium' }}</p>
+    </div>
     <!-- Individual Accounts -->
     <div class="accounts-container">
         <!-- Youtube -->
         <ng-container *ngFor="let youtube of userStats.youtubeStats">
-            <app-account-block
-                [accountImg]="youtube.iconBas64"
-                [backupImg]="youtubeLogo"
-                [link]="youtube.link"
+            <app-account-block [accountImg]="youtube.iconBas64" [backupImg]="youtubeLogo" [link]="youtube.link"
                 [accountType]="'youtube'">
                 <div class="details-items-container">
                     <div class="details-item primary">
@@ -34,10 +35,7 @@
         </ng-container>
         <!-- Instagram -->
         <ng-container *ngFor="let instagram of userStats.instaStats">
-            <app-account-block
-                [accountImg]="instagram.iconBase64"
-                [backupImg]="instagramLogo"
-                [link]="instagram.link"
+            <app-account-block [accountImg]="instagram.iconBase64" [backupImg]="instagramLogo" [link]="instagram.link"
                 [accountType]="'instagram'">
                 <div class="details-items-container">
                     <div class="details-item primary">
@@ -61,10 +59,7 @@
         </ng-container>
         <!-- Spotify -->
         <ng-container *ngFor="let spotify of userStats.spotifyStats">
-            <app-account-block
-                [accountImg]="spotifyLogo"
-                [backupImg]="spotifyLogo"
-                [link]="spotify.link"
+            <app-account-block [accountImg]="spotifyLogo" [backupImg]="spotifyLogo" [link]="spotify.link"
                 [accountType]="'spotify'">
                 <div class="details-items-container">
                     <div class="details-item primary">
@@ -80,10 +75,7 @@
         </ng-container>
         <!-- Newgrounds -->
         <ng-container *ngFor="let newgrounds of userStats.newgroundsStats">
-            <app-account-block
-                [accountImg]="newgroundsLogo"
-                [backupImg]="newgroundsLogo"
-                [link]="newgrounds.link"
+            <app-account-block [accountImg]="newgroundsLogo" [backupImg]="newgroundsLogo" [link]="newgrounds.link"
                 [accountType]="'newgrounds'">
                 <div class="details-items-container">
                     <div class="details-item primary">
@@ -121,10 +113,7 @@
         </ng-container>
         <!-- SoundCloud -->
         <ng-container *ngFor="let soundcloud of userStats.soundcloudStats">
-            <app-account-block
-                [accountImg]="soundcloud.iconBas64"
-                [backupImg]="soundcloudLogo"
-                [link]="soundcloud.link"
+            <app-account-block [accountImg]="soundcloud.iconBas64" [backupImg]="soundcloudLogo" [link]="soundcloud.link"
                 [accountType]="'soundcloud'">
                 <div class="details-items-container">
                     <div class="details-item primary">
@@ -148,10 +137,7 @@
         </ng-container>
         <!-- Twitter -->
         <ng-container *ngFor="let twitter of userStats.twitterStats">
-            <app-account-block
-                [accountImg]="twitter.iconBase64"
-                [backupImg]="twitterLogo"
-                [link]="twitter.link"
+            <app-account-block [accountImg]="twitter.iconBase64" [backupImg]="twitterLogo" [link]="twitter.link"
                 [accountType]="'twitter'">
                 <div class="details-items-container">
                     <div class="details-item primary">
@@ -179,10 +165,7 @@
         </ng-container>
         <!-- Twitch -->
         <ng-container *ngFor="let twitch of userStats.twitchStats">
-            <app-account-block
-                [accountImg]="twitch.iconBas64"
-                [backupImg]="twitchLogo"
-                [link]="twitch.link"
+            <app-account-block [accountImg]="twitch.iconBas64" [backupImg]="twitchLogo" [link]="twitch.link"
                 [accountType]="'twitch'">
                 <div class="details-items-container">
                     <div class="details-item primary">
@@ -202,10 +185,7 @@
         </ng-container>
         <!-- Tik Tok -->
         <ng-container *ngFor="let tiktok of userStats.tiktokStats">
-            <app-account-block
-                [accountImg]="tiktok.iconBase64"
-                [backupImg]="tiktokLogo"
-                [link]="tiktok.link"
+            <app-account-block [accountImg]="tiktok.iconBase64" [backupImg]="tiktokLogo" [link]="tiktok.link"
                 [accountType]="'tiktok'">
                 <div class="details-items-container">
                     <div class="details-item primary">

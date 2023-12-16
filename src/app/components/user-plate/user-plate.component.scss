@@ -6,6 +6,15 @@
         margin-top: 5px;
     }
 }
+
+.timestamp { 
+    width: 100%;
+    @include flex-row-center();
+    font-size: 12px;
+    color: lightgray;
+    padding: 5px;
+}
+
 .user-plate-container {
     border-radius: 20px;
     width: 365px;
@@ -14,6 +23,32 @@
         background-color: $border-color;
         border-radius: 50px 50px 0px 0px;
         height: 15px;
+        &::before { 
+            content: "";
+            position: absolute;
+            background-color: transparent;
+            top: 15px;
+            height: 50px;
+            width: 30px;
+            border-top-left-radius: 15px;
+            box-shadow: 0 -15px 0 0 #5e67a4;
+            transform: rotate(0deg);
+            left: 0px;
+            z-index: 2;
+        }
+        &::after { 
+            content: "";
+            position: absolute;
+            background-color: transparent;
+            top: 15px;
+            height: 50px;
+            width: 30px;
+            border-top-right-radius: 15px;
+            box-shadow: 0 -15px 0 0 #5e67a4;
+            transform: rotate(0deg);
+            right: 0px;
+            z-index: 2;
+        }
     }
     .top-row {
         padding-top: 10px;
@@ -76,10 +111,40 @@
         padding-left: 15px;
         padding-right: 15px;
         float: right;
+        z-index: 2;
+        position: relative;
         p {
             color: white;
             float: right;
             font-weight: 500;
+            z-index: 2;
+        }
+        height: 20px;
+        &::after { 
+            content: "";
+            position: absolute;
+            background-color: transparent;
+            bottom: 20px;
+            height: 50px;
+            width: 30px;
+            border-top-left-radius: 20px;
+            box-shadow: 0 -20px 0 0 #5e67a4;
+            transform: rotate(180deg);
+            right: 0px;
+            z-index: -1;
+        }
+        &::before { 
+            content: "";
+            position: absolute;
+            background-color: transparent;
+            bottom: 20px;
+            height: 50px;
+            width: 30px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -20px 0 0 #5e67a4;
+            transform: rotate(180deg);
+            left: 0px;
+            z-index: -1;
         }
     }
 }
