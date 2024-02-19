@@ -2,7 +2,7 @@
     <div class="header-row"></div>
     <div class="top-row">
         <img id="profileImage" *ngIf="!!userStats.youtubeStats.length" class="profile-image"
-            [src]="userStats.youtubeStats[0].iconBas64" />
+            [src]="userStats.youtubeStats[0].iconBase64" />
         <app-display-plate [displayText]="userStats.id"></app-display-plate>
     </div>
     <div class="info-row">
@@ -13,7 +13,7 @@
     </div>
     <div class="stats-objects">
         <!-- Youtube -->
-        <ng-container *ngIf="!!userStats.youtubeStats.length">
+        <ng-container *ngIf="!!userStats.youtubeStats.length && youtubeFollowers > 0">
             <app-user-plate-block [accountType]="'youtube'">
                 <div class="app-block-rows-container">
                     <div class="app-block-row primary">
@@ -31,7 +31,7 @@
             </app-user-plate-block>
         </ng-container>
         <!-- Instagram -->
-        <ng-container *ngIf="!!userStats.instaStats.length">
+        <ng-container *ngIf="!!userStats.instaStats.length && instagramFollowers > 0">
             <app-user-plate-block [accountType]="'instagram'">
                 <div class="app-block-rows-container">
                     <div class="app-block-row primary">
@@ -45,7 +45,7 @@
             </app-user-plate-block>
         </ng-container>
         <!-- Twitter -->
-        <ng-container *ngIf="!!userStats.twitterStats.length">
+        <ng-container *ngIf="!!userStats.twitterStats.length && twitterFollowers > 0">
             <app-user-plate-block [accountType]="'twitter'">
                 <div class="app-block-rows-container">
                     <div class="app-block-row primary">
@@ -59,7 +59,7 @@
             </app-user-plate-block>
         </ng-container>
         <!-- Spotify -->
-        <ng-container *ngIf="!!userStats.spotifyStats.length">
+        <ng-container *ngIf="!!userStats.spotifyStats.length && spotifyFollowers > 0">
             <app-user-plate-block [accountType]="'spotify'">
                 <div class="app-block-rows-container">
                     <div class="app-block-row primary">
@@ -73,7 +73,7 @@
             </app-user-plate-block>
         </ng-container>
         <!-- Newgrounds -->
-        <ng-container *ngIf="!!userStats.newgroundsStats.length">
+        <ng-container *ngIf="!!userStats.newgroundsStats.length && newgroundsFollowers > 0">
             <app-user-plate-block [accountType]="'newgrounds'">
                 <div class="app-block-rows-container">
                     <div class="app-block-row primary">
@@ -87,7 +87,7 @@
             </app-user-plate-block>
         </ng-container>
         <!-- SoundCloud -->
-        <ng-container *ngIf="!!userStats.soundcloudStats.length">
+        <ng-container *ngIf="!!userStats.soundcloudStats.length && soundcloudFollowers > 0">
             <app-user-plate-block [accountType]="'soundcloud'">
                 <div class="app-block-rows-container">
                     <div class="app-block-row primary">
@@ -101,7 +101,7 @@
             </app-user-plate-block>
         </ng-container>
         <!-- Twitch -->
-        <ng-container *ngIf="!!userStats.twitchStats.length">
+        <ng-container *ngIf="!!userStats.twitchStats.length && twitchFollowers > 0">
             <app-user-plate-block [accountType]="'twitch'">
                 <div class="app-block-rows-container">
                     <div class="app-block-row primary">
@@ -115,7 +115,7 @@
             </app-user-plate-block>
         </ng-container>
         <!-- TikTok -->
-        <ng-container *ngIf="!!userStats.tiktokStats.length">
+        <ng-container *ngIf="!!userStats.tiktokStats.length && tiktokFollowers > 0">
             <app-user-plate-block [accountType]="'tiktok'">
                 <div class="app-block-rows-container">
                     <div class="app-block-row primary">

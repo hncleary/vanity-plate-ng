@@ -106,6 +106,10 @@ $search-box-height: 100px;
             background: lightgrey;
             color: black
         }
+        &:hover { 
+            cursor: pointer;
+            background: rgb(235, 235, 235);
+        }
     }
 }
 .user-list-count {

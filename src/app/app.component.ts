@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { environment } from 'src/environment/environment';
 
 @Component({
     selector: 'app-root',
@@ -8,7 +9,8 @@ import { DomSanitizer } from '@angular/platform-browser';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-    title = 'vanity-plate-social';
+    public version = environment.version;
+    public title = 'vanity-plate-social';
     constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
         this.matIconRegistry.addSvgIcon(
             'youtube',
