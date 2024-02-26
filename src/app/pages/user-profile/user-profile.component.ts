@@ -19,6 +19,7 @@ export class UserProfileComponent {
 
     public youtubeLogo = 'assets/youtube.png';
     public instagramLogo = 'assets/instagram.png';
+    public threadsLogo = 'assets/threads.png';
     public spotifyLogo = 'assets/spotify.png';
     public newgroundsLogo = 'assets/newgrounds.png';
     public soundcloudLogo = 'assets/soundcloud.png';

@@ -9,7 +9,7 @@
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="link-box" *ngIf="!!link">
-        <button mat-raised-button (click)="openLink()">
+        <button mat-raised-button (click)="openLink()" [matTooltip]="linkTooltip">
             <mat-icon>open_in_new</mat-icon>
         </button>
     </div>

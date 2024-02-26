@@ -21,6 +21,10 @@ export class AppComponent {
             this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svgs/instagram.svg')
         );
         this.matIconRegistry.addSvgIcon(
+            'threads',
+            this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svgs/threads.svg')
+        );
+        this.matIconRegistry.addSvgIcon(
             'spotify',
             this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svgs/spotify.svg')
         );

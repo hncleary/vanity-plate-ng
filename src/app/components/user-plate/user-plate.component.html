@@ -44,6 +44,20 @@
                 </div>
             </app-user-plate-block>
         </ng-container>
+        <!-- Threads -->
+        <ng-container *ngIf="!!userStats.threadsStats.length && threadsFollowers > 0">
+            <app-user-plate-block [accountType]="'threads'">
+                <div class="app-block-rows-container">
+                    <div class="app-block-row primary">
+                        <p>Threads</p>
+                    </div>
+                    <div class="app-block-row">
+                        <mat-icon>groups</mat-icon>
+                        <p>{{ threadsFollowers | numberTruncate }}</p>
+                    </div>
+                </div>
+            </app-user-plate-block>
+        </ng-container>
         <!-- Twitter -->
         <ng-container *ngIf="!!userStats.twitterStats.length && twitterFollowers > 0">
             <app-user-plate-block [accountType]="'twitter'">

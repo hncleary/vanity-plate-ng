@@ -9,6 +9,7 @@ export class UserPlateBlockComponent {
     @Input() public accountType:
         | 'youtube'
         | 'instagram'
+        | 'threads'
         | 'twitter'
         | 'spotify'
         | 'newgrounds'

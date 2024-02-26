@@ -59,6 +59,32 @@
                 </app-account-block>
             </ng-container>
         </ng-container>
+        <!-- Threads -->
+        <ng-container *ngFor="let threads of userStats.threadsStats">
+            <ng-container *ngIf="!!threads">
+                <app-account-block [accountImg]="threads?.iconBase64 ?? ''" [backupImg]="threadsLogo" [link]="threads?.link ?? ''"
+                    [accountType]="'threads'">
+                    <div class="details-items-container">
+                        <div class="details-item primary" *ngIf="!!threads.displayName">
+                            <mat-icon>account_circle</mat-icon>
+                            <p appTruncationTip>{{ threads.displayName }}</p>
+                        </div>
+                        <div class="details-item">
+                            <mat-icon>badge</mat-icon>
+                            <p appTruncationTip>@{{ threads.username }}</p>
+                        </div>
+                        <div class="details-item" *ngIf=" threads.followerCount > 0">
+                            <mat-icon>groups</mat-icon>
+                            <p appTruncationTip>{{ threads.followerCount | number }} Followers</p>
+                        </div>
+                        <div class="details-item" *ngIf=" threads.followingCount > 0">
+                            <mat-icon>person_add</mat-icon>
+                            <p appTruncationTip>{{ threads.followingCount | number }} Following</p>
+                        </div>
+                    </div>
+                </app-account-block>
+            </ng-container>
+        </ng-container>
         <!-- Spotify -->
         <ng-container *ngFor="let spotify of userStats.spotifyStats">
             <app-account-block [accountImg]="spotifyLogo" [backupImg]="spotifyLogo" [link]="spotify?.link ?? ''"

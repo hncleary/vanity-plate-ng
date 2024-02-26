@@ -124,6 +124,14 @@ export class InstagramStats extends ProfileStatsBase {
     }
 }
 
+/** Stats associated with threads accounts */
+export class ThreadsStats extends ProfileStatsBase {
+    constructor() {
+        super();
+        this.platformName = 'Threads';
+    }
+}
+
 /** Stats associated with newgrounds accounts */
 export class NewgroundsStats extends ProfileStatsBase {
     // Post Counts
@@ -233,6 +241,7 @@ export class VanityPlateProfileStats {
     // Account Stats
     public youtubeStats: YoutubeStats[] = [];
     public instaStats: InstagramStats[] = [];
+    public threadsStats: ThreadsStats[] = [];
     public spotifyStats: SpotifyStats[] = [];
     public newgroundsStats: NewgroundsStats[] = [];
     public soundcloudStats: SoundCloudStats[] = [];

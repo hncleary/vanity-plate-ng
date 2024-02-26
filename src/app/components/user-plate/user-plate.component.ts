@@ -20,6 +20,9 @@ export class UserPlateComponent implements AfterViewInit {
     public instagramAccounts = 0;
     public instagramFollowers = 0;
 
+    public threadsAccounts = 0;
+    public threadsFollowers = 0;
+
     public twitterAccounts = 0;
     public twitterFollowers = 0;
 
@@ -62,6 +65,9 @@ export class UserPlateComponent implements AfterViewInit {
       // Instagram
       this.instagramAccounts = this.userStats.instaStats.length;
       this.instagramFollowers = this.sumArr(this.userStats.instaStats.map((a) => a?.followerCount ?? 0));
+      // Threads
+      this.threadsAccounts = this.userStats.threadsStats.length;
+      this.threadsFollowers = this.sumArr(this.userStats.threadsStats.map((a) => a?.followerCount ?? 0));
       // Twitter 
       this.twitterAccounts = this.userStats.twitterStats.length;
       this.twitterFollowers = this.sumArr(this.userStats.twitterStats.map((a) => a?.followerCount ?? 0));

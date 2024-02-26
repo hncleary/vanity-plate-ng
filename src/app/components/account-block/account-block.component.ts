@@ -12,6 +12,7 @@ export class AccountBlockComponent implements AfterViewInit {
     @Input() public accountType:
         | 'youtube'
         | 'instagram'
+        | 'threads'
         | 'twitter'
         | 'spotify'
         | 'newgrounds'
@@ -21,6 +22,7 @@ export class AccountBlockComponent implements AfterViewInit {
         | 'none' = 'none';
     public accountImgSrc = '';
     public roundLess = false;
+    public linkTooltip = '';
     public ngAfterViewInit(): void {
       setTimeout(() => { 
         switch (this.accountType) {
@@ -29,6 +31,9 @@ export class AccountBlockComponent implements AfterViewInit {
                 break;
             case 'instagram':
                 this.accountImgSrc = 'assets/instagram-circle.png';
+                break;
+            case 'threads':
+                this.accountImgSrc = 'assets/threads.png';
                 break;
             case 'twitter':
                 this.accountImgSrc = 'assets/twitter.png';
@@ -46,6 +51,8 @@ export class AccountBlockComponent implements AfterViewInit {
                 this.accountImgSrc = 'assets/tiktok-square.png';
                 break;
         }
+        this.linkTooltip = `Open this profile on ${ this.accountType.charAt(0).toUpperCase()
+            + this.accountType.slice(1)}`;
       });
     }
 
