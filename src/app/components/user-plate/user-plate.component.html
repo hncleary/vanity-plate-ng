@@ -2,7 +2,7 @@
     <div class="header-row"></div>
     <div class="top-row">
         <img id="profileImage" *ngIf="!!userStats.youtubeStats.length" class="profile-image"
-            [src]="userStats.youtubeStats[0].iconBase64" />
+            [src]="userImageSrc" />
         <app-display-plate [displayText]="userStats.id"></app-display-plate>
     </div>
     <div class="info-row">
