@@ -1,6 +1,6 @@
 @import 'src/styles.scss';
 
-:host { 
+:host {
     width: 100%;
     height: 100%;
 }
@@ -8,14 +8,55 @@
 .stats-container {
     @include flex-col-center();
     width: 100%;
-    .timestamp { 
+    .timestamp {
         width: 100%;
         @include flex-row-center();
         font-size: 12px;
         color: gray;
         padding: 10px;
     }
-    .accounts-container { 
+    .filter-container {
+        border: solid red 1px;
+    }
+    .accounts-count-container {
+        font-size: 12px;
+        color: gray;
+    }
+    .sorting-selection {
+        border-radius: 5px;
+        width: 350px;
+        font-size: 12px;
+        color: grey;
+        padding: 3px;
+        @include flex-row-center;
+        justify-content: flex-start;
+        gap: 5px;
+        margin: 10px;
+        .sort-label {
+            margin-right: 10px;
+            @include flex-row-center;
+            gap: 5px;
+        }
+        .sort-option {
+            border: solid lightgrey 1px;
+            padding: 3px 10px;
+            &.selected-item {
+                background: lightgrey;
+                color: black;
+            }
+            &:hover {
+                cursor: pointer;
+                background: rgb(235, 235, 235);
+            }
+        }
+        .sort-options-container {
+            @include flex-row-center();
+            flex-wrap: wrap;
+            width: calc(100% - 100px);
+            gap: 5px;
+        }
+    }
+    .accounts-container {
         padding-top: 10px;
         padding-bottom: 10px;
         display: flex;
@@ -26,7 +67,7 @@
         align-items: center;
         max-width: 1400px;
 
-        .details-items-container { 
+        .details-items-container {
             padding-top: 3px;
             padding-left: 10px;
             padding-right: 10px;
@@ -36,13 +77,13 @@
             height: 100%;
             width: 135px;
         }
-        .details-item { 
+        .details-item {
             margin-top: -6px;
-            &.primary { 
+            &.primary {
                 color: black;
                 font-weight: bold;
             }
-            p { 
+            p {
                 @include text-truncate();
                 position: relative;
             }
@@ -51,13 +92,13 @@
             justify-content: flex-start;
             color: grey;
             font-size: 14px;
-            mat-icon { 
+            mat-icon {
                 color: grey;
                 font-size: 19px;
                 margin-top: 5px;
             }
         }
-        .newgrounds-counts-row { 
+        .newgrounds-counts-row {
             @include flex-row-center();
             justify-content: flex-start;
             gap: 6px;
@@ -66,19 +107,15 @@
                 font-size: 12px;
                 margin-left: -5px;
             }
-            mat-icon { 
+            mat-icon {
                 color: grey;
                 font-size: 16px;
                 margin-top: 5px;
                 margin-right: -5px;
             }
-            .count { 
+            .count {
                 @include flex-row-center();
             }
         }
     }
-
 }
-
-
-

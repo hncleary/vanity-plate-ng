@@ -30,7 +30,7 @@ export class VanityDbService {
         let statKey: keyof VanityPlateProfileStats;
         for(statKey in stats) { 
             const accounts = stats[statKey];
-            if(typeof accounts !== 'string') { 
+            if(typeof accounts !== 'string' && typeof accounts !== 'function') { 
                 /** Loop over each account listed within the platform */
                 for (const account of accounts) {
                     if (account?.followerCount) {
@@ -248,4 +248,8 @@ export class VanityPlateProfileStats {
     public twitterStats: TwitterStats[] = [];
     public twitchStats: TwitchStats[] = [];
     public tiktokStats: TiktokStats[] = [];
+
+    public static getConcatStatsArray(profileStats: VanityPlateProfileStats): ProfileStatsBase[] {
+      return [...profileStats.youtubeStats, ...profileStats.instaStats, ...profileStats.newgroundsStats, ...profileStats.soundcloudStats, ...profileStats.spotifyStats, ...profileStats.threadsStats, ...profileStats.tiktokStats, ...profileStats.twitchStats, ...profileStats.twitterStats];
+    }
 }

@@ -43,7 +43,7 @@ export class UserPlateComponent implements AfterViewInit {
     public tiktokFollowers = 0;
 
     ngAfterViewInit() {
-        this.getProfileImgPalette();
+        // this.getProfileImgPalette();
         setTimeout(() => { 
           this.getAccountTotals();
           this.setUserImage();
@@ -52,7 +52,7 @@ export class UserPlateComponent implements AfterViewInit {
 
     public setUserImage() { 
       // Get an array of every stats object present for the user
-      let stats: ProfileStatsBase[] = [...this.userStats.youtubeStats, ...this.userStats.instaStats, ...this.userStats.newgroundsStats, ...this.userStats.soundcloudStats, ...this.userStats.spotifyStats, ...this.userStats.threadsStats, ...this.userStats.tiktokStats, ...this.userStats.twitchStats, ...this.userStats.twitterStats];
+      let stats: ProfileStatsBase[] = VanityPlateProfileStats.getConcatStatsArray(this.userStats);
       // Sort the array by most popular
       stats = stats.sort((a, b) => a.followerCount < b.followerCount ? 1 : -1);
       for(const stat of stats) { 

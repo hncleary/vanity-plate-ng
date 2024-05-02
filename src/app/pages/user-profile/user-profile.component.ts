@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { VanityDbService, VanityPlateProfileStats, VanityPlateSum } from 'src/app/service/vanity-db.service';
+import { ProfileStatsBase, VanityDbService, VanityPlateProfileStats, VanityPlateSum } from 'src/app/service/vanity-db.service';
 import { filter } from 'rxjs/operators';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
@@ -14,8 +14,11 @@ export class UserProfileComponent {
     public loading = true;
     public username = '';
     public userStats: VanityPlateProfileStats = new VanityPlateProfileStats();
+    public concatStatsArray: ProfileStatsBase[] = [];
     public userSum: VanityPlateSum = new VanityPlateSum();
     public timeRetrieved = 0;
+
+    public filterValue = '';
 
     public youtubeLogo = 'assets/youtube.png';
     public instagramLogo = 'assets/instagram.png';
@@ -26,6 +29,8 @@ export class UserProfileComponent {
     public twitterLogo = 'assets/twitter.png';
     public twitchLogo = 'assets/twitch.png';
     public tiktokLogo = 'assets/tiktok.png';
+
+    public currentSort: 'none' | 'alpha-account' | 'alpha-platform' | 'popular-account' | 'popular-platform' = 'popular-platform';
 
     constructor(
         private _router: Router,
@@ -48,6 +53,7 @@ export class UserProfileComponent {
     public async getStats(username: string) {
         /** Retrieve user stats */
         this.userStats = await this._dbSvc.getStatsForUser(username);
+        this.concatStatsArray= VanityPlateProfileStats.getConcatStatsArray(this.userStats);
         /** Summate total follower count */
         this.userSum = this._dbSvc.getProfileStatsSummation(username, this.userStats);
         this.getTimeRetrieved();
@@ -58,5 +64,58 @@ export class UserProfileComponent {
         if(this.userStats.youtubeStats.length) { 
           this.timeRetrieved = this.userStats.youtubeStats[0].timeRetrieved;
         }
-      }
+    }
+
+    public updateSort(newSort: 'none' | 'alpha-account' | 'alpha-platform' | 'popular-account' | 'popular-platform') { 
+        this.currentSort = newSort;
+        this.sortAccountsArray();
+    }
+
+    private sortAccountsArray() { 
+        if(this.currentSort === 'alpha-account') {
+            this.concatStatsArray = this.concatStatsArray.sort((a, b) => {
+                if(!a.displayName) { 
+                    return 1;
+                } else if(!b.displayName) { 
+                    return -1;
+                } else { 
+                    return a.displayName < b.displayName ? -1 : 1;
+                }
+            });
+        }
+        if(this.currentSort === 'alpha-platform') {
+            this.concatStatsArray = this.concatStatsArray.sort((a, b) => a.platformName < b.platformName ? -1 : 1);
+        }
+        if(this.currentSort === 'popular-account') {
+            this.concatStatsArray = this.concatStatsArray.sort((a, b) => a.followerCount > b.followerCount ? -1 : 1);
+        }
+        if(this.currentSort === 'popular-platform') {
+            const platformRankings = this.getPlatformFollowTotals();
+            this.concatStatsArray = this.concatStatsArray.sort((a, b) => {
+                const aRank: number | undefined = platformRankings.get(a.platformName);
+                const bRank: number | undefined = platformRankings.get(b.platformName);
+                if(aRank && bRank) { 
+                    if(aRank > bRank) { 
+                        return -1;
+                    } else if(bRank  > aRank) { 
+                        return 1;
+                    } else { 
+                        return a.followerCount > b.followerCount ? -1 : 1;
+                    }
+                }
+                return -1;
+            });
+            
+        }
+
+    }
+
+    private getPlatformFollowTotals(): Map<string, number> { 
+        const totals: Map<string, number> = new Map<string, number>();
+        for(const account of this.concatStatsArray) { 
+            const value: number | undefined = totals.get(account.platformName);
+            totals.set(account.platformName, value ? value + account.followerCount : account.followerCount);
+        }
+        return totals;
+    }
 }
