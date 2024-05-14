@@ -59,10 +59,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "vanity-plate-social:build:production"
+                          "buildTarget": "vanity-plate-social:build:production"
                         },
                         "development": {
-                            "browserTarget": "vanity-plate-social:build:development"
+                          "buildTarget": "vanity-plate-social:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -70,7 +70,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "vanity-plate-social:build"
+                      "buildTarget": "vanity-plate-social:build"
                     }
                 },
                 "test": {
