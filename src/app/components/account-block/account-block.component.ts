@@ -19,41 +19,46 @@ export class AccountBlockComponent implements AfterViewInit {
         | 'soundcloud'
         | 'twitch'
         | 'tiktok'
+        | 'facebook'
         | 'none' = 'none';
     public accountImgSrc = '';
     public roundLess = false;
     public linkTooltip = '';
     public ngAfterViewInit(): void {
-      setTimeout(() => { 
-        switch (this.accountType) {
-            case 'youtube':
-                this.accountImgSrc = 'assets/youtube.png';
-                break;
-            case 'instagram':
-                this.accountImgSrc = 'assets/instagram-circle.png';
-                break;
-            case 'threads':
-                this.accountImgSrc = 'assets/threads.png';
-                break;
-            case 'twitter':
-                this.accountImgSrc = 'assets/twitter.png';
-                break;
-            case 'newgrounds':
-                this.roundLess = true;
-                break;
-            case 'soundcloud':
-                this.accountImgSrc = 'assets/soundcloud.png';
-                break;
-            case 'twitch':
-                this.accountImgSrc = 'assets/twitch-square.png';
-                break;
-            case 'tiktok':
-                this.accountImgSrc = 'assets/tiktok-square.png';
-                break;
-        }
-        this.linkTooltip = `Open this profile on ${ this.accountType.charAt(0).toUpperCase()
-            + this.accountType.slice(1)}`;
-      });
+        setTimeout(() => {
+            switch (this.accountType) {
+                case 'youtube':
+                    this.accountImgSrc = 'assets/youtube.png';
+                    break;
+                case 'instagram':
+                    this.accountImgSrc = 'assets/instagram-circle.png';
+                    break;
+                case 'threads':
+                    this.accountImgSrc = 'assets/threads.png';
+                    break;
+                case 'twitter':
+                    this.accountImgSrc = 'assets/twitter.png';
+                    break;
+                case 'newgrounds':
+                    this.roundLess = true;
+                    break;
+                case 'soundcloud':
+                    this.accountImgSrc = 'assets/soundcloud.png';
+                    break;
+                case 'twitch':
+                    this.accountImgSrc = 'assets/twitch-square.png';
+                    break;
+                case 'tiktok':
+                    this.accountImgSrc = 'assets/tiktok-square.png';
+                    break;
+                case 'facebook':
+                    this.accountImgSrc = 'assets/facebook.png';
+                    break;
+            }
+            this.linkTooltip = `Open this profile on ${
+                this.accountType.charAt(0).toUpperCase() + this.accountType.slice(1)
+            }`;
+        });
     }
 
     public openLink() {

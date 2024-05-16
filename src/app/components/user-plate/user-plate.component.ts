@@ -42,73 +42,79 @@ export class UserPlateComponent implements AfterViewInit {
     public tiktokAccounts = 0;
     public tiktokFollowers = 0;
 
+    public facebookAccounts = 0;
+    public facebookFollowers = 0;
+
     ngAfterViewInit() {
         // this.getProfileImgPalette();
-        setTimeout(() => { 
-          this.getAccountTotals();
-          this.setUserImage();
-        })
+        setTimeout(() => {
+            this.getAccountTotals();
+            this.setUserImage();
+        });
     }
 
-    public setUserImage() { 
-      // Get an array of every stats object present for the user
-      let stats: ProfileStatsBase[] = VanityPlateProfileStats.getConcatStatsArray(this.userStats);
-      // Sort the array by most popular
-      stats = stats.sort((a, b) => a.followerCount < b.followerCount ? 1 : -1);
-      for(const stat of stats) { 
-        // Use the profile image from the first account that has a valid base 64 string
-        if(stat.iconBase64) { 
-          this.userImageSrc = stat.iconBase64;
-          return;
+    public setUserImage() {
+        // Get an array of every stats object present for the user
+        let stats: ProfileStatsBase[] = VanityPlateProfileStats.getConcatStatsArray(this.userStats);
+        // Sort the array by most popular
+        stats = stats.sort((a, b) => (a.followerCount < b.followerCount ? 1 : -1));
+        for (const stat of stats) {
+            // Use the profile image from the first account that has a valid base 64 string
+            if (stat.iconBase64) {
+                this.userImageSrc = stat.iconBase64;
+                return;
+            }
         }
-      }
     }
 
     public getProfileImgPalette() {
-      const fac = new FastAverageColor();
-      const profileImage = document.querySelector('#profileImage') as HTMLImageElement;
-      fac.getColorAsync(profileImage).then((color) => { 
-        this.userColor = color.rgb;
-        this.isUserColorDark = color.isDark;
-      });
+        const fac = new FastAverageColor();
+        const profileImage = document.querySelector('#profileImage') as HTMLImageElement;
+        fac.getColorAsync(profileImage).then((color) => {
+            this.userColor = color.rgb;
+            this.isUserColorDark = color.isDark;
+        });
     }
 
-    public getAccountTotals() { 
-      // Youtube
-      this.youtubeAccounts = this.userStats.youtubeStats.length;
-      this.youtubeFollowers = this.sumArr(this.userStats.youtubeStats.map((a) => a?.followerCount ?? 0));
-      this.youtubeViews = this.sumArr(this.userStats.youtubeStats.map((a) => a?.totalViews ?? 0));
-      // Instagram
-      this.instagramAccounts = this.userStats.instaStats.length;
-      this.instagramFollowers = this.sumArr(this.userStats.instaStats.map((a) => a?.followerCount ?? 0));
-      // Threads
-      this.threadsAccounts = this.userStats.threadsStats.length;
-      this.threadsFollowers = this.sumArr(this.userStats.threadsStats.map((a) => a?.followerCount ?? 0));
-      // Twitter 
-      this.twitterAccounts = this.userStats.twitterStats.length;
-      this.twitterFollowers = this.sumArr(this.userStats.twitterStats.map((a) => a?.followerCount ?? 0));
-      // Spotify
-      this.spotifyAccounts = this.userStats.spotifyStats.length;
-      this.spotifyFollowers = this.sumArr(this.userStats.spotifyStats.map((a) => a?.followerCount ?? 0));
-      // Newgrounds
-      this.newgroundsAccounts = this.userStats.newgroundsStats.length;
-      this.newgroundsFollowers = this.sumArr(this.userStats.newgroundsStats.map((a) => a?.followerCount ?? 0));
-      // SoundCloud
-      this.soundcloudAccounts = this.userStats.soundcloudStats.length;
-      this.soundcloudFollowers = this.sumArr(this.userStats.soundcloudStats.map((a) => a?.followerCount ?? 0));
-      // Twitch
-      this.twitchAccounts = this.userStats.twitchStats.length;
-      this.twitchFollowers = this.sumArr(this.userStats.twitchStats.map((a) => a?.followerCount ?? 0));
-      // TikTok
-      this.tiktokAccounts = this.userStats.tiktokStats.length;
-      this.tiktokFollowers = this.sumArr(this.userStats.tiktokStats.map((a) => a?.followerCount ?? 0));
+    public getAccountTotals() {
+        // Youtube
+        this.youtubeAccounts = this.userStats.youtubeStats.length;
+        this.youtubeFollowers = this.sumArr(this.userStats.youtubeStats.map((a) => a?.followerCount ?? 0));
+        this.youtubeViews = this.sumArr(this.userStats.youtubeStats.map((a) => a?.totalViews ?? 0));
+        // Instagram
+        this.instagramAccounts = this.userStats.instaStats.length;
+        this.instagramFollowers = this.sumArr(this.userStats.instaStats.map((a) => a?.followerCount ?? 0));
+        // Threads
+        this.threadsAccounts = this.userStats.threadsStats.length;
+        this.threadsFollowers = this.sumArr(this.userStats.threadsStats.map((a) => a?.followerCount ?? 0));
+        // Twitter
+        this.twitterAccounts = this.userStats.twitterStats.length;
+        this.twitterFollowers = this.sumArr(this.userStats.twitterStats.map((a) => a?.followerCount ?? 0));
+        // Spotify
+        this.spotifyAccounts = this.userStats.spotifyStats.length;
+        this.spotifyFollowers = this.sumArr(this.userStats.spotifyStats.map((a) => a?.followerCount ?? 0));
+        // Newgrounds
+        this.newgroundsAccounts = this.userStats.newgroundsStats.length;
+        this.newgroundsFollowers = this.sumArr(this.userStats.newgroundsStats.map((a) => a?.followerCount ?? 0));
+        // SoundCloud
+        this.soundcloudAccounts = this.userStats.soundcloudStats.length;
+        this.soundcloudFollowers = this.sumArr(this.userStats.soundcloudStats.map((a) => a?.followerCount ?? 0));
+        // Twitch
+        this.twitchAccounts = this.userStats.twitchStats.length;
+        this.twitchFollowers = this.sumArr(this.userStats.twitchStats.map((a) => a?.followerCount ?? 0));
+        // TikTok
+        this.tiktokAccounts = this.userStats.tiktokStats.length;
+        this.tiktokFollowers = this.sumArr(this.userStats.tiktokStats.map((a) => a?.followerCount ?? 0));
+        // Facebook
+        this.facebookAccounts = this.userStats.facebookStats.length;
+        this.facebookFollowers = this.sumArr(this.userStats.facebookStats.map((a) => a?.followerCount ?? 0));
     }
 
-    public sumArr(numArr: number[]) { 
-      let sum = 0;
-      for(const num of numArr) { 
-        sum += num;
-      }
-      return sum;
+    public sumArr(numArr: number[]) {
+        let sum = 0;
+        for (const num of numArr) {
+            sum += num;
+        }
+        return sum;
     }
 }

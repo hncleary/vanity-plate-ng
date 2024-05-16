@@ -1,8 +1,7 @@
 <mat-card class="user-plate-container">
     <div class="header-row"></div>
     <div class="top-row">
-        <img id="profileImage" *ngIf="!!userStats.youtubeStats.length" class="profile-image"
-            [src]="userImageSrc" />
+        <img id="profileImage" *ngIf="!!userStats.youtubeStats.length" class="profile-image" [src]="userImageSrc" />
         <app-display-plate [displayText]="userStats.id"></app-display-plate>
     </div>
     <div class="info-row">
@@ -138,6 +137,20 @@
                     <div class="app-block-row">
                         <mat-icon>groups</mat-icon>
                         <p>{{ tiktokFollowers | numberTruncate }}</p>
+                    </div>
+                </div>
+            </app-user-plate-block>
+        </ng-container>
+        <!-- Facebook -->
+        <ng-container *ngIf="!!userStats.facebookStats.length && facebookFollowers > 0">
+            <app-user-plate-block [accountType]="'facebook'">
+                <div class="app-block-rows-container">
+                    <div class="app-block-row primary">
+                        <p>Facebook</p>
+                    </div>
+                    <div class="app-block-row">
+                        <mat-icon>groups</mat-icon>
+                        <p>{{ facebookFollowers | numberTruncate }}</p>
                     </div>
                 </div>
             </app-user-plate-block>

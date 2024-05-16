@@ -16,5 +16,6 @@ export class UserPlateBlockComponent {
         | 'soundcloud'
         | 'twitch'
         | 'tiktok'
+        | 'facebook'
         | 'none' = 'none';
 }

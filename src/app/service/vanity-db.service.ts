@@ -5,7 +5,8 @@ import { firstValueFrom } from 'rxjs';
     providedIn: 'root',
 })
 export class VanityDbService {
-    private readonly statsFolderUrl: string = 'https://raw.githubusercontent.com/hncleary/vanity-plate-db/main/stats-v2/';
+    private readonly statsFolderUrl: string =
+        'https://raw.githubusercontent.com/hncleary/vanity-plate-db/main/stats-v2/';
     private readonly statsJsonSuffix: string = '-stats.json';
 
     constructor(private _apiSvc: ApiService) {}
@@ -13,7 +14,7 @@ export class VanityDbService {
     /** Retrieve the complete stats object for a user */
     public async getStatsForUser(username: string): Promise<VanityPlateProfileStats> {
         const json = await firstValueFrom(
-            this._apiSvc.getUrl(`${this.statsFolderUrl}${username}${this.statsJsonSuffix}`),
+            this._apiSvc.getUrl(`${this.statsFolderUrl}${username}${this.statsJsonSuffix}`)
         );
         return json as VanityPlateProfileStats;
     }
@@ -28,9 +29,9 @@ export class VanityDbService {
         sum.username = username;
 
         let statKey: keyof VanityPlateProfileStats;
-        for(statKey in stats) { 
+        for (statKey in stats) {
             const accounts = stats[statKey];
-            if(typeof accounts !== 'string' && typeof accounts !== 'function') { 
+            if (typeof accounts !== 'string' && typeof accounts !== 'function') {
                 /** Loop over each account listed within the platform */
                 for (const account of accounts) {
                     if (account?.followerCount) {
@@ -39,7 +40,7 @@ export class VanityDbService {
                 }
             }
         }
-        
+
         return sum;
     }
 }
@@ -234,6 +235,14 @@ export class YoutubeStats extends ProfileStatsBase {
     }
 }
 
+/** Stats associated with facebook page accounts */
+export class FacebookStats extends ProfileStatsBase {
+    constructor() {
+        super();
+        this.platformName = 'Facebook';
+    }
+}
+
 /** Object all stat object for a defined profile */
 export class VanityPlateProfileStats {
     public id = '';
@@ -248,8 +257,20 @@ export class VanityPlateProfileStats {
     public twitterStats: TwitterStats[] = [];
     public twitchStats: TwitchStats[] = [];
     public tiktokStats: TiktokStats[] = [];
+    public facebookStats: FacebookStats[] = [];
 
     public static getConcatStatsArray(profileStats: VanityPlateProfileStats): ProfileStatsBase[] {
-      return [...profileStats.youtubeStats, ...profileStats.instaStats, ...profileStats.newgroundsStats, ...profileStats.soundcloudStats, ...profileStats.spotifyStats, ...profileStats.threadsStats, ...profileStats.tiktokStats, ...profileStats.twitchStats, ...profileStats.twitterStats];
+        return [
+            ...profileStats.youtubeStats,
+            ...profileStats.instaStats,
+            ...profileStats.newgroundsStats,
+            ...profileStats.soundcloudStats,
+            ...profileStats.spotifyStats,
+            ...profileStats.threadsStats,
+            ...profileStats.tiktokStats,
+            ...profileStats.twitchStats,
+            ...profileStats.twitterStats,
+            ...profileStats.facebookStats,
+        ];
     }
 }

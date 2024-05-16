@@ -48,5 +48,9 @@ export class AppComponent {
             'tiktok',
             this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svgs/tiktok.svg')
         );
+        this.matIconRegistry.addSvgIcon(
+            'facebook',
+            this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/svgs/facebook.svg')
+        );
     }
 }

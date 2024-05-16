@@ -5,7 +5,7 @@
     </ng-container>
     <!-- Time Retrieved -->
     <div class="timestamp">
-        <p *ngIf="!!timeRetrieved">Stats Last Updated {{ timeRetrieved | date: 'medium' }}</p>
+        <p *ngIf="!!timeRetrieved">Stats Last Updated {{ timeRetrieved | date : 'medium' }}</p>
     </div>
     <!-- Filter -->
     <div clas="filter-container">
@@ -18,76 +18,103 @@
             <p>Sort by</p>
         </div>
         <div class="sort-options-container">
-            <mat-card appearance="outlined" class="sort-option" (click)="updateSort('popular-platform')"
-                [ngClass]="{'selected-item': currentSort === 'popular-platform'}">
+            <mat-card
+                appearance="outlined"
+                class="sort-option"
+                (click)="updateSort('popular-platform')"
+                [ngClass]="{ 'selected-item': currentSort === 'popular-platform' }">
                 <p>Popular (Platform)</p>
             </mat-card>
-            <mat-card appearance="outlined" class="sort-option" (click)="updateSort('alpha-platform')"
-                [ngClass]="{'selected-item': currentSort === 'alpha-platform'}">
+            <mat-card
+                appearance="outlined"
+                class="sort-option"
+                (click)="updateSort('alpha-platform')"
+                [ngClass]="{ 'selected-item': currentSort === 'alpha-platform' }">
                 <p>A-z (Platform)</p>
             </mat-card>
-            <mat-card appearance="outlined" class="sort-option" (click)="updateSort('popular-account')"
-                [ngClass]="{'selected-item': currentSort === 'popular-account'}">
+            <mat-card
+                appearance="outlined"
+                class="sort-option"
+                (click)="updateSort('popular-account')"
+                [ngClass]="{ 'selected-item': currentSort === 'popular-account' }">
                 <p>Popular (Account)</p>
             </mat-card>
-            <mat-card appearance="outlined" class="sort-option" (click)="updateSort('alpha-account')"
-                [ngClass]="{'selected-item': currentSort === 'alpha-account'}">
+            <mat-card
+                appearance="outlined"
+                class="sort-option"
+                (click)="updateSort('alpha-account')"
+                [ngClass]="{ 'selected-item': currentSort === 'alpha-account' }">
                 <p>A-z (Account)</p>
             </mat-card>
         </div>
     </mat-card>
     <!-- Account Count -->
     <div class="accounts-count-container">
-        Showing {{(concatStatsArray | genericFilter: filterValue).length}} of {{concatStatsArray.length}} accounts
+        Showing {{ (concatStatsArray | genericFilter : filterValue).length }} of {{ concatStatsArray.length }} accounts
     </div>
     <!-- Individual Accounts -->
     <div class="accounts-container">
-        <ng-container *ngFor="let account of concatStatsArray | genericFilter: filterValue">
+        <ng-container *ngFor="let account of concatStatsArray | genericFilter : filterValue">
             <ng-container [ngSwitch]="account.platformName">
                 <!-- Youtube -->
                 <ng-container *ngSwitchCase="'YouTube'">
-                    <ng-template [ngTemplateOutlet]="youtubeCard"
-                        [ngTemplateOutletContext]="{account:account}"></ng-template>
+                    <ng-template
+                        [ngTemplateOutlet]="youtubeCard"
+                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
                 </ng-container>
                 <!-- Instagram -->
                 <ng-container *ngSwitchCase="'Instagram'">
-                    <ng-template [ngTemplateOutlet]="instagramCard"
-                        [ngTemplateOutletContext]="{account:account}"></ng-template>
+                    <ng-template
+                        [ngTemplateOutlet]="instagramCard"
+                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
                 </ng-container>
                 <!-- Threads -->
                 <ng-container *ngSwitchCase="'Threads'">
-                    <ng-template [ngTemplateOutlet]="threadsCard"
-                        [ngTemplateOutletContext]="{account:account}"></ng-template>
+                    <ng-template
+                        [ngTemplateOutlet]="threadsCard"
+                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
                 </ng-container>
                 <!-- Spotify -->
                 <ng-container *ngSwitchCase="'Spotify'">
-                    <ng-template [ngTemplateOutlet]="spotifyCard"
-                        [ngTemplateOutletContext]="{account:account}"></ng-template>
+                    <ng-template
+                        [ngTemplateOutlet]="spotifyCard"
+                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
                 </ng-container>
                 <!-- Newgrounds -->
                 <ng-container *ngSwitchCase="'Newgrounds'">
-                    <ng-template [ngTemplateOutlet]="newgroundsCard"
-                        [ngTemplateOutletContext]="{account:account}"></ng-template>
+                    <ng-template
+                        [ngTemplateOutlet]="newgroundsCard"
+                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
                 </ng-container>
                 <!-- SoundCloud -->
                 <ng-container *ngSwitchCase="'SoundCloud'">
-                    <ng-template [ngTemplateOutlet]="soundcloudCard"
-                        [ngTemplateOutletContext]="{account:account}"></ng-template>
+                    <ng-template
+                        [ngTemplateOutlet]="soundcloudCard"
+                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
                 </ng-container>
                 <!-- Twitter -->
                 <ng-container *ngSwitchCase="'Twitter'">
-                    <ng-template [ngTemplateOutlet]="twitterCard"
-                        [ngTemplateOutletContext]="{account:account}"></ng-template>
+                    <ng-template
+                        [ngTemplateOutlet]="twitterCard"
+                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
                 </ng-container>
                 <!-- Twitch -->
                 <ng-container *ngSwitchCase="'Twitch'">
-                    <ng-template [ngTemplateOutlet]="twitchCard"
-                        [ngTemplateOutletContext]="{account:account}"></ng-template>
+                    <ng-template
+                        [ngTemplateOutlet]="twitchCard"
+                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
                 </ng-container>
                 <!-- Tik Tok -->
                 <ng-container *ngSwitchCase="'Tik Tok'">
-                    <ng-template [ngTemplateOutlet]="tiktokCard"
-                        [ngTemplateOutletContext]="{account:account}"></ng-template>
+                    <ng-template
+                        [ngTemplateOutlet]="tiktokCard"
+                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
+                </ng-container>
+                <!-- Facebook -->
+                <ng-container *ngSwitchCase="'Facebook'">
+                    <ng-template
+                        [ngTemplateOutlet]="facebookCard"
+                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
                 </ng-container>
             </ng-container>
         </ng-container>
@@ -96,7 +123,10 @@
 
 <!-- YouTube Card Template -->
 <ng-template #youtubeCard let-account="account">
-    <app-account-block [accountImg]="account?.iconBase64 ?? ''" [backupImg]="youtubeLogo" [link]="account?.link ?? ''"
+    <app-account-block
+        [accountImg]="account?.iconBase64 ?? ''"
+        [backupImg]="youtubeLogo"
+        [link]="account?.link ?? ''"
         [accountType]="'youtube'">
         <div class="details-items-container">
             <div class="details-item primary">
@@ -109,7 +139,7 @@
             </div>
             <div class="details-item">
                 <mat-icon>groups</mat-icon>
-                <p appTruncationTip>{{ account.followerCount| number }}</p>
+                <p appTruncationTip>{{ account.followerCount | number }}</p>
             </div>
             <div class="details-item">
                 <mat-icon>visibility</mat-icon>
@@ -121,7 +151,10 @@
 
 <!-- Instagram Card Template -->
 <ng-template #instagramCard let-account="account">
-    <app-account-block [accountImg]="account?.iconBase64 ?? ''" [backupImg]="instagramLogo" [link]="account?.link ?? ''"
+    <app-account-block
+        [accountImg]="account?.iconBase64 ?? ''"
+        [backupImg]="instagramLogo"
+        [link]="account?.link ?? ''"
         [accountType]="'instagram'">
         <div class="details-items-container">
             <div class="details-item primary" *ngIf="!!account.displayName">
@@ -132,11 +165,11 @@
                 <mat-icon>badge</mat-icon>
                 <p appTruncationTip>&#64;{{ account.username }}</p>
             </div>
-            <div class="details-item" *ngIf=" account.followerCount > 0">
+            <div class="details-item" *ngIf="account.followerCount > 0">
                 <mat-icon>groups</mat-icon>
                 <p appTruncationTip>{{ account.followerCount | number }} Followers</p>
             </div>
-            <div class="details-item" *ngIf=" account.followingCount > 0">
+            <div class="details-item" *ngIf="account.followingCount > 0">
                 <mat-icon>person_add</mat-icon>
                 <p appTruncationTip>{{ account.followingCount | number }} Following</p>
             </div>
@@ -146,7 +179,10 @@
 
 <!-- Threads Card Template -->
 <ng-template #threadsCard let-account="account">
-    <app-account-block [accountImg]="account?.iconBase64 ?? ''" [backupImg]="threadsLogo" [link]="account?.link ?? ''"
+    <app-account-block
+        [accountImg]="account?.iconBase64 ?? ''"
+        [backupImg]="threadsLogo"
+        [link]="account?.link ?? ''"
         [accountType]="'threads'">
         <div class="details-items-container">
             <div class="details-item primary" *ngIf="!!account.displayName">
@@ -157,11 +193,11 @@
                 <mat-icon>badge</mat-icon>
                 <p appTruncationTip>&#64;{{ account.username }}</p>
             </div>
-            <div class="details-item" *ngIf=" account.followerCount > 0">
+            <div class="details-item" *ngIf="account.followerCount > 0">
                 <mat-icon>groups</mat-icon>
                 <p appTruncationTip>{{ account.followerCount | number }} Followers</p>
             </div>
-            <div class="details-item" *ngIf=" account.followingCount > 0">
+            <div class="details-item" *ngIf="account.followingCount > 0">
                 <mat-icon>person_add</mat-icon>
                 <p appTruncationTip>{{ account.followingCount | number }} Following</p>
             </div>
@@ -171,7 +207,10 @@
 
 <!-- Spotify Card Template -->
 <ng-template #spotifyCard let-account="account">
-    <app-account-block [accountImg]="spotifyLogo" [backupImg]="spotifyLogo" [link]="account?.link ?? ''"
+    <app-account-block
+        [accountImg]="spotifyLogo"
+        [backupImg]="spotifyLogo"
+        [link]="account?.link ?? ''"
         [accountType]="'spotify'">
         <div class="details-items-container">
             <div class="details-item primary">
@@ -180,7 +219,7 @@
             </div>
             <div class="details-item">
                 <mat-icon>groups</mat-icon>
-                <p appTruncationTip>{{ account.followerCount| number }} Monthly Listeners</p>
+                <p appTruncationTip>{{ account.followerCount | number }} Monthly Listeners</p>
             </div>
         </div>
     </app-account-block>
@@ -188,7 +227,10 @@
 
 <!-- Newgrounds Card Template -->
 <ng-template #newgroundsCard let-account="account">
-    <app-account-block [accountImg]="newgroundsLogo" [backupImg]="newgroundsLogo" [link]="account?.link ?? ''"
+    <app-account-block
+        [accountImg]="newgroundsLogo"
+        [backupImg]="newgroundsLogo"
+        [link]="account?.link ?? ''"
         [accountType]="'newgrounds'">
         <div class="details-items-container">
             <div class="details-item primary">
@@ -197,7 +239,7 @@
             </div>
             <div class="details-item">
                 <mat-icon>groups</mat-icon>
-                <p>{{ account.followerCount| number }}</p>
+                <p>{{ account.followerCount | number }}</p>
             </div>
             <div class="newgrounds-counts-row">
                 <!-- movies -->
@@ -227,8 +269,11 @@
 
 <!-- SoundCloud Card Template -->
 <ng-template #soundcloudCard let-account="account">
-    <app-account-block [accountImg]="account?.iconBase64 ?? ''" [backupImg]="soundcloudLogo"
-        [link]="account?.link ?? ''" [accountType]="'soundcloud'">
+    <app-account-block
+        [accountImg]="account?.iconBase64 ?? ''"
+        [backupImg]="soundcloudLogo"
+        [link]="account?.link ?? ''"
+        [accountType]="'soundcloud'">
         <div class="details-items-container">
             <div class="details-item primary">
                 <mat-icon>account_circle</mat-icon>
@@ -240,7 +285,7 @@
             </div>
             <div class="details-item">
                 <mat-icon>groups</mat-icon>
-                <p appTruncationTip>{{ account.followerCount| number }} Followers</p>
+                <p appTruncationTip>{{ account.followerCount | number }} Followers</p>
             </div>
             <div class="details-item">
                 <mat-icon>audiotrack</mat-icon>
@@ -252,7 +297,10 @@
 
 <!-- Twitter Card Template -->
 <ng-template #twitterCard let-account="account">
-    <app-account-block [accountImg]="account?.iconBase64 ?? ''" [backupImg]="twitterLogo" [link]="account?.link ?? ''"
+    <app-account-block
+        [accountImg]="account?.iconBase64 ?? ''"
+        [backupImg]="twitterLogo"
+        [link]="account?.link ?? ''"
         [accountType]="'twitter'">
         <div class="details-items-container">
             <div class="details-item primary" *ngIf="!!account.displayName">
@@ -281,7 +329,10 @@
 
 <!-- Twitch Card Template -->
 <ng-template #twitchCard let-account="account">
-    <app-account-block [accountImg]="account?.iconBase64 ?? ''" [backupImg]="twitchLogo" [link]="account?.link ?? ''"
+    <app-account-block
+        [accountImg]="account?.iconBase64 ?? ''"
+        [backupImg]="twitchLogo"
+        [link]="account?.link ?? ''"
         [accountType]="'twitch'">
         <div class="details-items-container">
             <div class="details-item primary">
@@ -294,7 +345,7 @@
             </div>
             <div class="details-item">
                 <mat-icon>groups</mat-icon>
-                <p appTruncationTip>{{ account.followerCount| number }} Followers</p>
+                <p appTruncationTip>{{ account.followerCount | number }} Followers</p>
             </div>
         </div>
     </app-account-block>
@@ -302,7 +353,10 @@
 
 <!-- TikTok Card Template -->
 <ng-template #tiktokCard let-account="account">
-    <app-account-block [accountImg]="account?.iconBase64 ?? ''" [backupImg]="tiktokLogo" [link]="account?.link ?? ''"
+    <app-account-block
+        [accountImg]="account?.iconBase64 ?? ''"
+        [backupImg]="tiktokLogo"
+        [link]="account?.link ?? ''"
         [accountType]="'tiktok'">
         <div class="details-items-container">
             <div class="details-item primary">
@@ -315,11 +369,35 @@
             </div>
             <div class="details-item">
                 <mat-icon>groups</mat-icon>
-                <p appTruncationTip>{{ account.followerCount| number }} Followers</p>
+                <p appTruncationTip>{{ account.followerCount | number }} Followers</p>
             </div>
             <div class="details-item">
                 <mat-icon>groups</mat-icon>
-                <p appTruncationTip>{{ account.likes| number }} Likes Received</p>
+                <p appTruncationTip>{{ account.likes | number }} Likes Received</p>
+            </div>
+        </div>
+    </app-account-block>
+</ng-template>
+
+<!-- Facebook Card Template -->
+<ng-template #facebookCard let-account="account">
+    <app-account-block
+        [accountImg]="account?.iconBase64 ?? ''"
+        [backupImg]="facebookLogo"
+        [link]="account?.link ?? ''"
+        [accountType]="'facebook'">
+        <div class="details-items-container">
+            <div class="details-item primary">
+                <mat-icon>account_circle</mat-icon>
+                <p appTruncationTip>{{ account.displayName }}</p>
+            </div>
+            <div class="details-item">
+                <mat-icon>badge</mat-icon>
+                <p appTruncationTip>&#64;{{ account.username }}</p>
+            </div>
+            <div class="details-item">
+                <mat-icon>groups</mat-icon>
+                <p appTruncationTip>{{ account.followerCount | number }} Followers</p>
             </div>
         </div>
     </app-account-block>
