@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-var */
 /* eslint-disable @typescript-eslint/no-var-requires */
-export const environment = { 
-    version: `${require('../../package.json').version}`
-}
+declare var require: any;
+export const environment = {
+    version: `${require('../../package.json').version}`,
+};

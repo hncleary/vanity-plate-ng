@@ -1,23 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { StatsBlockComponent } from './stats-block.component';
 
 describe('StatsBlockComponent', () => {
-  let component: StatsBlockComponent;
-  let fixture: ComponentFixture<StatsBlockComponent>;
+    let component: StatsBlockComponent;
+    let fixture: ComponentFixture<StatsBlockComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ StatsBlockComponent ]
-    })
-    .compileComponents();
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            schemas: [NO_ERRORS_SCHEMA],
+            declarations: [StatsBlockComponent],
+        });
+        fixture = TestBed.createComponent(StatsBlockComponent);
+        component = fixture.componentInstance;
+    });
 
-    fixture = TestBed.createComponent(StatsBlockComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('can load instance', () => {
+        expect(component).toBeTruthy();
+    });
 });

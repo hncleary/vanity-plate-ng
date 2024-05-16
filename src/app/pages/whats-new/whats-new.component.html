@@ -1,0 +1,21 @@
+<mat-card appearance="outlined">
+    <mat-card-title> What's New </mat-card-title>
+    <mat-divider></mat-divider>
+    <ng-container *ngFor="let entry of entries">
+        <div class="entry-header-row">
+            <h3>
+                {{ entry.date }}
+            </h3>
+            <p>
+                {{ entry.version }}
+            </p>
+        </div>
+        <div class="updates-container">
+            <ul>
+                <ng-container *ngFor="let update of entry.updates">
+                    <li>{{ update }}</li>
+                </ng-container>
+            </ul>
+        </div>
+    </ng-container>
+</mat-card>

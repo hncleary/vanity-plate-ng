@@ -26,12 +26,14 @@ import { AccountBlockComponent } from './components/account-block/account-block.
 import { TruncationTipDirective } from './directives/truncation-tip.directive';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { UserPlateBlockComponent } from './components/user-plate-block/user-plate-block.component';
+import { WhatsNewComponent } from './pages/whats-new/whats-new.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
         AboutComponent,
+        WhatsNewComponent,
         UserProfileComponent,
         HeaderNavButtonsComponent,
         StatsBlockComponent,

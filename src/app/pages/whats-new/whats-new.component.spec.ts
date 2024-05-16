@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { AccountBlockComponent } from './account-block.component';
+import { WhatsNewComponent } from './whats-new.component';
 
-describe('AccountBlockComponent', () => {
-    let component: AccountBlockComponent;
-    let fixture: ComponentFixture<AccountBlockComponent>;
+describe('WhatsNewComponent', () => {
+    let component: WhatsNewComponent;
+    let fixture: ComponentFixture<WhatsNewComponent>;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             schemas: [NO_ERRORS_SCHEMA],
-            declarations: [AccountBlockComponent],
+            declarations: [WhatsNewComponent],
         });
-        fixture = TestBed.createComponent(AccountBlockComponent);
+        fixture = TestBed.createComponent(WhatsNewComponent);
         component = fixture.componentInstance;
     });
 

@@ -9,6 +9,7 @@ import { PAGE_ROUTES } from 'src/app/app-routing.module';
 export class HeaderNavButtonsComponent {
     public readonly links: LinkDef[] = [
         { icon: 'home', route: PAGE_ROUTES.HOME, displayName: 'Home' },
+        { icon: 'newspaper', route: PAGE_ROUTES.WHATS_NEW, displayName: "What's New" },
         { icon: 'info', route: PAGE_ROUTES.ABOUT, displayName: 'About' },
     ];
 }
