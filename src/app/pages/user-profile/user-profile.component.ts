@@ -70,7 +70,9 @@ export class UserProfileComponent {
     /** Get the most recent time retrieved value from the list of profile stats objects */
     public getTimeRetrieved() {
         if (this.concatStatsArray.length > 0) {
-            this.concatStatsArray.sort((a, b) => (a.timeRetrieved < b.timeRetrieved ? -1 : 1))[0].timeRetrieved;
+            this.timeRetrieved = this.concatStatsArray.sort((a, b) =>
+                a.timeRetrieved < b.timeRetrieved ? -1 : 1
+            )[0].timeRetrieved;
         }
     }
 
