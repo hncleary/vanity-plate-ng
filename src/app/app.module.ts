@@ -9,7 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { HeaderNavButtonsComponent } from './components/header-nav-buttons/header-nav-buttons.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,8 +28,7 @@ import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { UserPlateBlockComponent } from './components/user-plate-block/user-plate-block.component';
 import { WhatsNewComponent } from './pages/whats-new/whats-new.component';
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         HomeComponent,
         AboutComponent,
@@ -46,24 +45,18 @@ import { WhatsNewComponent } from './pages/whats-new/whats-new.component';
         TruncationTipDirective,
         UserPlateBlockComponent,
     ],
-    imports: [
-        BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MatToolbarModule,
         MatIconModule,
         MatDividerModule,
         MatCardModule,
-        HttpClientModule,
         MatButtonModule,
         MatDividerModule,
         MatFormFieldModule,
         MatInputModule,
         FormsModule,
         MatButtonModule,
-        MatTooltipModule,
-    ],
-    providers: [MatTooltip, MatIconRegistry],
-    bootstrap: [AppComponent],
-})
+        MatTooltipModule], providers: [MatTooltip, MatIconRegistry, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
