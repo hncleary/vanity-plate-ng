@@ -17,7 +17,6 @@ import { StatsBlockComponent } from './components/stats-block/stats-block.compon
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { SearchInputComponent } from './components/search-input/search-input.component';
 import { GenericFilterPipe } from './pipes/generic-filter.pipe';
 import { NumberTruncatePipe } from './pipes/number-truncate.pipe';
 import { DisplayPlateComponent } from './components/display-plate/display-plate.component';
@@ -27,8 +26,10 @@ import { TruncationTipDirective } from './directives/truncation-tip.directive';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { UserPlateBlockComponent } from './components/user-plate-block/user-plate-block.component';
 import { WhatsNewComponent } from './pages/whats-new/whats-new.component';
+import { NgxMatSearchbarModule } from 'ngx-mat-searchbar';
 
-@NgModule({ declarations: [
+@NgModule({
+    declarations: [
         AppComponent,
         HomeComponent,
         AboutComponent,
@@ -36,7 +37,6 @@ import { WhatsNewComponent } from './pages/whats-new/whats-new.component';
         UserProfileComponent,
         HeaderNavButtonsComponent,
         StatsBlockComponent,
-        SearchInputComponent,
         GenericFilterPipe,
         NumberTruncatePipe,
         DisplayPlateComponent,
@@ -45,7 +45,9 @@ import { WhatsNewComponent } from './pages/whats-new/whats-new.component';
         TruncationTipDirective,
         UserPlateBlockComponent,
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         MatToolbarModule,
@@ -58,5 +60,9 @@ import { WhatsNewComponent } from './pages/whats-new/whats-new.component';
         MatInputModule,
         FormsModule,
         MatButtonModule,
-        MatTooltipModule], providers: [MatTooltip, MatIconRegistry, provideHttpClient(withInterceptorsFromDi())] })
+        MatTooltipModule,
+        NgxMatSearchbarModule,
+    ],
+    providers: [MatTooltip, MatIconRegistry, provideHttpClient(withInterceptorsFromDi())],
+})
 export class AppModule {}

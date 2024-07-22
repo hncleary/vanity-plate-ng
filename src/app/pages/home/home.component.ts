@@ -11,13 +11,9 @@ import { VanityDbService, VanityPlateSumCollection } from 'src/app/service/vanit
 })
 export class HomeComponent implements OnInit {
     public sumCollection: VanityPlateSumCollection = new VanityPlateSumCollection();
-    public filterValue = '';
     public currentSort: 'alpha' | 'popular' = 'alpha';
 
-    constructor(
-        private _router: Router,
-        private _dbSvc: VanityDbService,
-    ) {}
+    constructor(private _router: Router, private _dbSvc: VanityDbService) {}
 
     ngOnInit(): void {
         void this.retrieveIndexList();
@@ -32,20 +28,20 @@ export class HomeComponent implements OnInit {
         this._router.navigateByUrl(`/${PAGE_ROUTES.USER}/${username}`);
     }
 
-    public clearFilterInput() { 
-        this.filterValue = '';
+    public sortSumCollection() {
+        if (this.currentSort === 'alpha') {
+            this.sumCollection.sums = this.sumCollection.sums.sort((a, b) =>
+                a.displayName.toLowerCase() < b.displayName.toLowerCase() ? -1 : 1
+            );
+        }
+        if (this.currentSort === 'popular') {
+            this.sumCollection.sums = this.sumCollection.sums.sort((a, b) =>
+                a.totalFollowers > b.totalFollowers ? -1 : 1
+            );
+        }
     }
 
-    public sortSumCollection() { 
-        if(this.currentSort === 'alpha') { 
-            this.sumCollection.sums = this.sumCollection.sums.sort((a, b) => a.displayName.toLowerCase() < b.displayName.toLowerCase() ? -1 : 1);
-        }
-        if(this.currentSort === 'popular') { 
-            this.sumCollection.sums = this.sumCollection.sums.sort((a, b) => a.totalFollowers > b.totalFollowers ? -1 : 1);
-        }
-    }
-
-    public updateSort(newSort: 'alpha' | 'popular') { 
+    public updateSort(newSort: 'alpha' | 'popular') {
         this.currentSort = newSort;
         this.sortSumCollection();
     }

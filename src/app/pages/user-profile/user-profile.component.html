@@ -9,7 +9,7 @@
     </div>
     <!-- Filter -->
     <div clas="filter-container">
-        <app-search-input [(value)]="filterValue" [inputWidth]="'300px'"></app-search-input>
+        <ngx-mat-searchbar #filter />
     </div>
     <!-- Sort Options Container -->
     <mat-card class="sorting-selection">
@@ -50,11 +50,11 @@
     </mat-card>
     <!-- Account Count -->
     <div class="accounts-count-container">
-        Showing {{ (concatStatsArray | genericFilter : filterValue).length }} of {{ concatStatsArray.length }} accounts
+        Showing {{ (concatStatsArray | genericFilter : filter.value).length }} of {{ concatStatsArray.length }} accounts
     </div>
     <!-- Individual Accounts -->
     <div class="accounts-container">
-        <ng-container *ngFor="let account of concatStatsArray | genericFilter : filterValue">
+        <ng-container *ngFor="let account of concatStatsArray | genericFilter : filter.value">
             <ng-container [ngSwitch]="account.platformName">
                 <!-- Youtube -->
                 <ng-container *ngSwitchCase="'YouTube'">

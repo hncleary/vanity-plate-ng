@@ -28,6 +28,7 @@
         "@ngneat/until-destroy": "^10.0.0",
         "fast-average-color": "^9.4.0",
         "i": "^0.3.7",
+        "ngx-mat-searchbar": "^1.0.6",
         "npm": "^10.7.0",
         "roboto-fontface": "^0.10.0",
         "rxjs": "~7.8.0",

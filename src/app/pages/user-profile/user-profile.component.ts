@@ -23,8 +23,6 @@ export class UserProfileComponent {
     public userSum: VanityPlateSum = new VanityPlateSum();
     public timeRetrieved = 0;
 
-    public filterValue = '';
-
     public youtubeLogo = 'assets/youtube.png';
     public instagramLogo = 'assets/instagram.png';
     public threadsLogo = 'assets/threads.png';
