@@ -26,6 +26,7 @@
         "@angular/platform-browser-dynamic": "^18.1.1",
         "@angular/router": "^18.1.1",
         "@ngneat/until-destroy": "^10.0.0",
+        "audit": "^0.0.6",
         "fast-average-color": "^9.4.0",
         "i": "^0.3.7",
         "ngx-mat-searchbar": "^1.0.6",
