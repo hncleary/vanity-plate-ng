@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
 export class WhatsNewComponent {
     public readonly entries: WhatsNewEntry[] = [
         {
+            date: 'Oct 9, 2024',
+            version: 'v1.2.0',
+            updates: ['Added support for historical charting of follower counts'],
+        },
+        {
             date: 'May 15, 2024',
             version: 'v1.1.5',
             updates: ['Added support for Facebook profile stats'],

@@ -1,0 +1,42 @@
+<div class="component-container">
+    <div class="chart-container">
+        <canvas baseChart [data]="chartData" [type]="chartType" [options]="chartOptions"> </canvas>
+    </div>
+    <div class="actions-container">
+        <div class="date-range-selection-container">
+            <p>Range:</p>
+            <mat-card
+                matRipple
+                appearance="outlined"
+                class="option"
+                (click)="changeDateRange(7)"
+                [ngClass]="{ 'selected-range': dayCount === 7 }">
+                7d
+            </mat-card>
+            <mat-card
+                matRipple
+                appearance="outlined"
+                class="option"
+                (click)="changeDateRange(30)"
+                [ngClass]="{ 'selected-range': dayCount === 30 }">
+                30d
+            </mat-card>
+            <mat-card
+                matRipple
+                appearance="outlined"
+                class="option"
+                (click)="changeDateRange(90)"
+                [ngClass]="{ 'selected-range': dayCount === 90 }">
+                90d
+            </mat-card>
+            <mat-card
+                matRipple
+                appearance="outlined"
+                class="option"
+                (click)="changeDateRange(365)"
+                [ngClass]="{ 'selected-range': dayCount === 365 }">
+                1yr
+            </mat-card>
+        </div>
+    </div>
+</div>

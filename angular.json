@@ -25,8 +25,7 @@
                         "inlineStyleLanguage": "scss",
                         "assets": ["src/favicon.ico", "src/assets"],
                         "styles": ["@angular/material/prebuilt-themes/indigo-pink.css", "src/styles.scss"],
-                        "scripts": [
-                        ]
+                        "scripts": []
                     },
                     "configurations": {
                         "production": {
@@ -59,18 +58,21 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                          "buildTarget": "vanity-plate-social:build:production"
+                            "buildTarget": "vanity-plate-social:build:production"
                         },
                         "development": {
-                          "buildTarget": "vanity-plate-social:build:development"
+                            "buildTarget": "vanity-plate-social:build:development"
                         }
+                    },
+                    "options": {
+                        "port": 4220
                     },
                     "defaultConfiguration": "development"
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                      "buildTarget": "vanity-plate-social:build"
+                        "buildTarget": "vanity-plate-social:build"
                     }
                 },
                 "test": {

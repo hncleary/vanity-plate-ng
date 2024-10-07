@@ -5,8 +5,6 @@ import { firstValueFrom } from 'rxjs';
     providedIn: 'root',
 })
 export class VanityDbService {
-    private readonly statsFolderUrl: string =
-        'https://raw.githubusercontent.com/hncleary/vanity-plate-db/main/stats-v2/';
     private readonly statsJsonSuffix: string = '-stats.json';
 
     constructor(private _apiSvc: ApiService) {}
@@ -14,16 +12,16 @@ export class VanityDbService {
     /** Retrieve the complete stats object for a user */
     public async getStatsForUser(username: string): Promise<VanityPlateProfileStats> {
         const json = await firstValueFrom(
-            this._apiSvc.getUrl(`${this.statsFolderUrl}${username}${this.statsJsonSuffix}`)
+            this._apiSvc.getUrl(`${this._apiSvc.statsFolderUrl}${username}${this.statsJsonSuffix}`)
         );
         return json as VanityPlateProfileStats;
     }
     /** Retrieve the index of users available within the database */
     public async getUserIndexList(): Promise<VanityPlateSumCollection> {
-        const json = await firstValueFrom(this._apiSvc.getUrl(`${this.statsFolderUrl}/db_summary.json`));
+        const json = await firstValueFrom(this._apiSvc.getUrl(`${this._apiSvc.statsFolderUrl}/db_summary.json`));
         return json as VanityPlateSumCollection;
     }
-
+    /** Retrieve a profile's stats summary */
     public getProfileStatsSummation(username: string, stats: VanityPlateProfileStats): VanityPlateSum {
         const sum = new VanityPlateSum();
         sum.username = username;

@@ -4,7 +4,7 @@
     min-width: 300px;
     overflow-x: hidden;
     @include flex-col-center();
-    .app-divider { 
+    .app-divider {
         margin: 10px;
     }
     .app-container {
@@ -42,11 +42,11 @@
             height: calc($footer-height);
             @include flex-row-center();
             gap: 10px;
-            p { 
+            p {
                 color: grey;
                 font-size: 14px;
             }
-            .version { 
+            .version {
                 color: lightgray;
                 font-size: 12px;
             }

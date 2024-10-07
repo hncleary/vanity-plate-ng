@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { filter } from 'rxjs/operators';
+import { HistoryFile, VanityDbHistoryService } from 'src/app/service/vanity-db-history.service';
 import {
     ProfileStatsBase,
     VanityDbService,
     VanityPlateProfileStats,
     VanityPlateSum,
 } from 'src/app/service/vanity-db.service';
-import { filter } from 'rxjs/operators';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
@@ -20,8 +21,17 @@ export class UserProfileComponent {
     public username = '';
     public userStats: VanityPlateProfileStats = new VanityPlateProfileStats();
     public concatStatsArray: ProfileStatsBase[] = [];
+    public get userPlatforms(): string[] {
+        const platforms: Set<string> = new Set<string>();
+        for (const stat of this.concatStatsArray) {
+            platforms.add(stat.platformName);
+        }
+        return Array.from(platforms);
+    }
     public userSum: VanityPlateSum = new VanityPlateSum();
     public timeRetrieved = 0;
+
+    public userHistory: HistoryFile = new HistoryFile();
 
     public youtubeLogo = 'assets/youtube.png';
     public instagramLogo = 'assets/instagram.png';
@@ -37,7 +47,11 @@ export class UserProfileComponent {
     public currentSort: 'none' | 'alpha-account' | 'alpha-platform' | 'popular-account' | 'popular-platform' =
         'popular-platform';
 
-    constructor(private _router: Router, private _dbSvc: VanityDbService) {
+    constructor(
+        private _router: Router,
+        private _dbSvc: VanityDbService,
+        private _dbHistorySvc: VanityDbHistoryService
+    ) {
         this._router.events
             .pipe(
                 filter((e) => e instanceof NavigationEnd),
@@ -49,7 +63,12 @@ export class UserProfileComponent {
                 const username = url.split('/u/').join('');
                 this.username = username;
                 void this.getStats(username);
+                void this.getHistory(username);
             });
+    }
+
+    public async getHistory(username: string) {
+        this.userHistory = await this._dbHistorySvc.getHistoricalUserStats(username);
     }
 
     public async getStats(username: string) {

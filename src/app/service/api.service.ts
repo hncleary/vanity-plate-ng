@@ -12,4 +12,7 @@ export class ApiService {
     public getUrl(url: string): Observable<unknown> {
         return this.http.get(url, { responseType: 'json' });
     }
+
+    public readonly statsFolderUrl: string =
+        'https://raw.githubusercontent.com/hncleary/vanity-plate-db/main/stats-v2/';
 }

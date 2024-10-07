@@ -7,119 +7,187 @@
     <div class="timestamp">
         <p *ngIf="!!timeRetrieved">Stats Last Updated {{ timeRetrieved | date : 'medium' }}</p>
     </div>
-    <!-- Filter -->
-    <div clas="filter-container">
-        <ngx-mat-searchbar #filter />
+    <!-- Historical Charting -->
+    <div class="chart-container">
+        <app-historical-chart
+            platform="All"
+            [cumulative]="true"
+            counts="Followers"
+            [historyData]="userHistory"
+            [statsArray]="concatStatsArray"></app-historical-chart>
     </div>
-    <!-- Sort Options Container -->
-    <mat-card class="sorting-selection">
-        <div class="sort-label">
-            <mat-icon>sort</mat-icon>
-            <p>Sort by</p>
-        </div>
-        <div class="sort-options-container">
-            <mat-card
-                appearance="outlined"
-                class="sort-option"
-                (click)="updateSort('popular-platform')"
-                [ngClass]="{ 'selected-item': currentSort === 'popular-platform' }">
-                <p>Popular (Platform)</p>
-            </mat-card>
-            <mat-card
-                appearance="outlined"
-                class="sort-option"
-                (click)="updateSort('alpha-platform')"
-                [ngClass]="{ 'selected-item': currentSort === 'alpha-platform' }">
-                <p>A-z (Platform)</p>
-            </mat-card>
-            <mat-card
-                appearance="outlined"
-                class="sort-option"
-                (click)="updateSort('popular-account')"
-                [ngClass]="{ 'selected-item': currentSort === 'popular-account' }">
-                <p>Popular (Account)</p>
-            </mat-card>
-            <mat-card
-                appearance="outlined"
-                class="sort-option"
-                (click)="updateSort('alpha-account')"
-                [ngClass]="{ 'selected-item': currentSort === 'alpha-account' }">
-                <p>A-z (Account)</p>
-            </mat-card>
-        </div>
-    </mat-card>
-    <!-- Account Count -->
-    <div class="accounts-count-container">
-        Showing {{ (concatStatsArray | genericFilter : filter.value).length }} of {{ concatStatsArray.length }} accounts
-    </div>
-    <!-- Individual Accounts -->
-    <div class="accounts-container">
-        <ng-container *ngFor="let account of concatStatsArray | genericFilter : filter.value">
-            <ng-container [ngSwitch]="account.platformName">
-                <!-- Youtube -->
-                <ng-container *ngSwitchCase="'YouTube'">
-                    <ng-template
-                        [ngTemplateOutlet]="youtubeCard"
-                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
-                </ng-container>
-                <!-- Instagram -->
-                <ng-container *ngSwitchCase="'Instagram'">
-                    <ng-template
-                        [ngTemplateOutlet]="instagramCard"
-                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
-                </ng-container>
-                <!-- Threads -->
-                <ng-container *ngSwitchCase="'Threads'">
-                    <ng-template
-                        [ngTemplateOutlet]="threadsCard"
-                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
-                </ng-container>
-                <!-- Spotify -->
-                <ng-container *ngSwitchCase="'Spotify'">
-                    <ng-template
-                        [ngTemplateOutlet]="spotifyCard"
-                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
-                </ng-container>
-                <!-- Newgrounds -->
-                <ng-container *ngSwitchCase="'Newgrounds'">
-                    <ng-template
-                        [ngTemplateOutlet]="newgroundsCard"
-                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
-                </ng-container>
-                <!-- SoundCloud -->
-                <ng-container *ngSwitchCase="'SoundCloud'">
-                    <ng-template
-                        [ngTemplateOutlet]="soundcloudCard"
-                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
-                </ng-container>
-                <!-- Twitter -->
-                <ng-container *ngSwitchCase="'Twitter'">
-                    <ng-template
-                        [ngTemplateOutlet]="twitterCard"
-                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
-                </ng-container>
-                <!-- Twitch -->
-                <ng-container *ngSwitchCase="'Twitch'">
-                    <ng-template
-                        [ngTemplateOutlet]="twitchCard"
-                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
-                </ng-container>
-                <!-- Tik Tok -->
-                <ng-container *ngSwitchCase="'Tik Tok'">
-                    <ng-template
-                        [ngTemplateOutlet]="tiktokCard"
-                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
-                </ng-container>
-                <!-- Facebook -->
-                <ng-container *ngSwitchCase="'Facebook'">
-                    <ng-template
-                        [ngTemplateOutlet]="facebookCard"
-                        [ngTemplateOutletContext]="{ account: account }"></ng-template>
-                </ng-container>
-            </ng-container>
+
+    <mat-tab-group
+        animationDuration="250ms"
+        backgroundColor="primary"
+        mat-stretch-tabs="false"
+        mat-align-tabs="center"
+        #userTabGroup>
+        <mat-tab>
+            <!-- Table Title -->
+            <ng-template mat-tab-label>
+                <div class="tab-title-container">
+                    <mat-icon>account_circle</mat-icon>
+                    Accounts
+                </div>
+            </ng-template>
+            <!-- Tab Content -->
+            <ng-template matTabContent>
+                <ng-template [ngTemplateOutlet]="accounts"></ng-template>
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <!-- Table Title -->
+            <ng-template mat-tab-label>
+                <div class="tab-title-container">
+                    <mat-icon>insights</mat-icon>
+                    Charts
+                </div>
+            </ng-template>
+            <!-- Tab Content -->
+            <ng-template matTabContent>
+                <ng-template [ngTemplateOutlet]="charts"></ng-template>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+
+<ng-template #charts>
+    <div class="charts-container">
+        <ng-container *ngFor="let platform of userPlatforms">
+            <div class="chart">
+                <p>{{ platform }}</p>
+                <app-historical-chart
+                    [platform]="platform"
+                    [cumulative]="false"
+                    counts="Followers"
+                    [historyData]="userHistory"
+                    [statsArray]="concatStatsArray"></app-historical-chart>
+            </div>
         </ng-container>
     </div>
-</div>
+</ng-template>
+
+<ng-template #accounts>
+    <div class="accounts-container">
+        <!-- Filter -->
+        <div class="filter-container">
+            <ngx-mat-searchbar #filter />
+        </div>
+        <!-- Sort Options Container -->
+        <mat-card class="sorting-selection">
+            <div class="sort-label">
+                <mat-icon>sort</mat-icon>
+                <p>Sort by</p>
+            </div>
+            <div class="sort-options-container">
+                <mat-card
+                    matRipple
+                    appearance="outlined"
+                    class="sort-option"
+                    (click)="updateSort('popular-platform')"
+                    [ngClass]="{ 'selected-item': currentSort === 'popular-platform' }">
+                    <p>Popular (Platform)</p>
+                </mat-card>
+                <mat-card
+                    matRipple
+                    appearance="outlined"
+                    class="sort-option"
+                    (click)="updateSort('alpha-platform')"
+                    [ngClass]="{ 'selected-item': currentSort === 'alpha-platform' }">
+                    <p>A-z (Platform)</p>
+                </mat-card>
+                <mat-card
+                    appearance="outlined"
+                    class="sort-option"
+                    (click)="updateSort('popular-account')"
+                    [ngClass]="{ 'selected-item': currentSort === 'popular-account' }">
+                    <p>Popular (Account)</p>
+                </mat-card>
+                <mat-card
+                    matRipple
+                    appearance="outlined"
+                    class="sort-option"
+                    (click)="updateSort('alpha-account')"
+                    [ngClass]="{ 'selected-item': currentSort === 'alpha-account' }">
+                    <p>A-z (Account)</p>
+                </mat-card>
+            </div>
+        </mat-card>
+        <!-- Account Count -->
+        <div class="accounts-count-container">
+            Showing {{ (concatStatsArray | genericFilter : filter.value).length }} of
+            {{ concatStatsArray.length }} accounts
+        </div>
+        <!-- Individual Accounts -->
+        <div class="accounts-container">
+            <ng-container *ngFor="let account of concatStatsArray | genericFilter : filter.value">
+                <ng-container [ngSwitch]="account.platformName">
+                    <!-- Youtube -->
+                    <ng-container *ngSwitchCase="'YouTube'">
+                        <ng-template
+                            [ngTemplateOutlet]="youtubeCard"
+                            [ngTemplateOutletContext]="{ account: account }"></ng-template>
+                    </ng-container>
+                    <!-- Instagram -->
+                    <ng-container *ngSwitchCase="'Instagram'">
+                        <ng-template
+                            [ngTemplateOutlet]="instagramCard"
+                            [ngTemplateOutletContext]="{ account: account }"></ng-template>
+                    </ng-container>
+                    <!-- Threads -->
+                    <ng-container *ngSwitchCase="'Threads'">
+                        <ng-template
+                            [ngTemplateOutlet]="threadsCard"
+                            [ngTemplateOutletContext]="{ account: account }"></ng-template>
+                    </ng-container>
+                    <!-- Spotify -->
+                    <ng-container *ngSwitchCase="'Spotify'">
+                        <ng-template
+                            [ngTemplateOutlet]="spotifyCard"
+                            [ngTemplateOutletContext]="{ account: account }"></ng-template>
+                    </ng-container>
+                    <!-- Newgrounds -->
+                    <ng-container *ngSwitchCase="'Newgrounds'">
+                        <ng-template
+                            [ngTemplateOutlet]="newgroundsCard"
+                            [ngTemplateOutletContext]="{ account: account }"></ng-template>
+                    </ng-container>
+                    <!-- SoundCloud -->
+                    <ng-container *ngSwitchCase="'SoundCloud'">
+                        <ng-template
+                            [ngTemplateOutlet]="soundcloudCard"
+                            [ngTemplateOutletContext]="{ account: account }"></ng-template>
+                    </ng-container>
+                    <!-- Twitter -->
+                    <ng-container *ngSwitchCase="'Twitter'">
+                        <ng-template
+                            [ngTemplateOutlet]="twitterCard"
+                            [ngTemplateOutletContext]="{ account: account }"></ng-template>
+                    </ng-container>
+                    <!-- Twitch -->
+                    <ng-container *ngSwitchCase="'Twitch'">
+                        <ng-template
+                            [ngTemplateOutlet]="twitchCard"
+                            [ngTemplateOutletContext]="{ account: account }"></ng-template>
+                    </ng-container>
+                    <!-- Tik Tok -->
+                    <ng-container *ngSwitchCase="'Tik Tok'">
+                        <ng-template
+                            [ngTemplateOutlet]="tiktokCard"
+                            [ngTemplateOutletContext]="{ account: account }"></ng-template>
+                    </ng-container>
+                    <!-- Facebook -->
+                    <ng-container *ngSwitchCase="'Facebook'">
+                        <ng-template
+                            [ngTemplateOutlet]="facebookCard"
+                            [ngTemplateOutletContext]="{ account: account }"></ng-template>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+</ng-template>
 
 <!-- YouTube Card Template -->
 <ng-template #youtubeCard let-account="account">

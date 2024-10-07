@@ -6,7 +6,7 @@
     </div>
 
     <mat-divider class="app-divider"></mat-divider>
-    
+
     <!-- Body -->
     <div class="body">
         <div class="content-container">
@@ -18,10 +18,10 @@
 
     <!-- Footer -->
     <div class="footer">
-        <div class="version">v{{version}}</div>
+        <div class="version">v{{ version }}</div>
+        @if(!isDevMode()) {
         <img src="https://www.counter12.com/img-zc14Yw1Ya1a253Cy-50.gif" />
-        <p>
-            total site views
-        </p>
+        } @else { dev-mode }
+        <p>total site views</p>
     </div>
 </div>
