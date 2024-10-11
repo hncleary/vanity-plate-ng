@@ -15,16 +15,24 @@
         color: gray;
         padding: 10px;
     }
-    .chart-container {
-        width: calc(100% - 1.5rem);
-        min-width: 350px;
-        max-width: 600px;
-        height: 300px;
-        margin: 1rem 0;
-    }
     mat-tab-group {
-        mat-tab-header {
-            background-color: #5e67a4;
+        transition: 0.2s;
+        ::ng-deep mat-tab-header {
+            background-color: #5e67a4 !important;
+            transition: 0.2s;
+            border-radius: 0px;
+            margin: auto;
+            width: 100%;
+            @media screen and (min-width: 900px) {
+                border-radius: 5px;
+                width: 900px;
+                margin: auto;
+            }
+            @media screen and (min-width: 1050px) {
+                border-radius: 5px;
+                width: 1050px;
+                margin: auto;
+            }
         }
         width: 100%;
         .tab-title-container {
@@ -142,8 +150,9 @@
     }
     .charts-container {
         overflow: hidden;
-        padding-top: 1rem;
-        width: 100%;
+        padding-left: 1rem;
+        padding-top: 2rem;
+        width: calc(100% - 2rem);
         @include flex-row-center();
         gap: 1rem;
         flex-wrap: wrap;
