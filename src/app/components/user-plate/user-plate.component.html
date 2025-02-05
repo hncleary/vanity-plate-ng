@@ -1,7 +1,9 @@
 <mat-card class="user-plate-container">
     <div class="header-row"></div>
     <div class="top-row">
-        <img id="profileImage" *ngIf="!!userStats.youtubeStats.length" class="profile-image" [src]="userImageSrc" />
+        @if(!!userStats.youtubeStats.length) {
+        <img id="profileImage" class="profile-image" [src]="userImageSrc" />
+        }
         <app-display-plate [displayText]="userStats.id"></app-display-plate>
     </div>
     <div class="info-row">
@@ -12,149 +14,158 @@
     </div>
     <div class="stats-objects">
         <!-- Youtube -->
-        <ng-container *ngIf="!!userStats.youtubeStats.length && youtubeFollowers > 0">
-            <app-user-plate-block [accountType]="'youtube'">
-                <div class="app-block-rows-container">
-                    <div class="app-block-row primary">
-                        <p>Youtube</p>
-                    </div>
-                    <div class="app-block-row">
-                        <mat-icon>groups</mat-icon>
-                        <p>{{ youtubeFollowers | numberTruncate }}</p>
-                    </div>
-                    <div class="app-block-row">
-                        <mat-icon>visibility</mat-icon>
-                        <p>{{ youtubeViews | numberTruncate }}</p>
-                    </div>
+        @if(!!userStats.youtubeStats.length && youtubeFollowers > 0) {
+        <app-user-plate-block [accountType]="'youtube'">
+            <div class="app-block-rows-container">
+                <div class="app-block-row primary">
+                    <p>Youtube</p>
                 </div>
-            </app-user-plate-block>
-        </ng-container>
+                <div class="app-block-row">
+                    <mat-icon>groups</mat-icon>
+                    <p>{{ youtubeFollowers | numberTruncate }}</p>
+                </div>
+                <div class="app-block-row">
+                    <mat-icon>visibility</mat-icon>
+                    <p>{{ youtubeViews | numberTruncate }}</p>
+                </div>
+            </div>
+        </app-user-plate-block>
+        }
+
         <!-- Instagram -->
-        <ng-container *ngIf="!!userStats.instaStats.length && instagramFollowers > 0">
-            <app-user-plate-block [accountType]="'instagram'">
-                <div class="app-block-rows-container">
-                    <div class="app-block-row primary">
-                        <p>Instagram</p>
-                    </div>
-                    <div class="app-block-row">
-                        <mat-icon>groups</mat-icon>
-                        <p>{{ instagramFollowers | numberTruncate }}</p>
-                    </div>
+        @if(!!userStats.instaStats.length && instagramFollowers > 0) {
+        <app-user-plate-block [accountType]="'instagram'">
+            <div class="app-block-rows-container">
+                <div class="app-block-row primary">
+                    <p>Instagram</p>
                 </div>
-            </app-user-plate-block>
-        </ng-container>
+                <div class="app-block-row">
+                    <mat-icon>groups</mat-icon>
+                    <p>{{ instagramFollowers | numberTruncate }}</p>
+                </div>
+            </div>
+        </app-user-plate-block>
+        }
+
         <!-- Threads -->
-        <ng-container *ngIf="!!userStats.threadsStats.length && threadsFollowers > 0">
-            <app-user-plate-block [accountType]="'threads'">
-                <div class="app-block-rows-container">
-                    <div class="app-block-row primary">
-                        <p>Threads</p>
-                    </div>
-                    <div class="app-block-row">
-                        <mat-icon>groups</mat-icon>
-                        <p>{{ threadsFollowers | numberTruncate }}</p>
-                    </div>
+        @if(!!userStats.threadsStats.length && threadsFollowers > 0) {
+        <app-user-plate-block [accountType]="'threads'">
+            <div class="app-block-rows-container">
+                <div class="app-block-row primary">
+                    <p>Threads</p>
                 </div>
-            </app-user-plate-block>
-        </ng-container>
+                <div class="app-block-row">
+                    <mat-icon>groups</mat-icon>
+                    <p>{{ threadsFollowers | numberTruncate }}</p>
+                </div>
+            </div>
+        </app-user-plate-block>
+        }
+
         <!-- Twitter -->
-        <ng-container *ngIf="!!userStats.twitterStats.length && twitterFollowers > 0">
-            <app-user-plate-block [accountType]="'twitter'">
-                <div class="app-block-rows-container">
-                    <div class="app-block-row primary">
-                        <p>Twitter</p>
-                    </div>
-                    <div class="app-block-row">
-                        <mat-icon>groups</mat-icon>
-                        <p>{{ twitterFollowers | numberTruncate }}</p>
-                    </div>
+        @if(!!userStats.twitterStats.length && twitterFollowers > 0) {
+        <app-user-plate-block [accountType]="'twitter'">
+            <div class="app-block-rows-container">
+                <div class="app-block-row primary">
+                    <p>Twitter</p>
                 </div>
-            </app-user-plate-block>
-        </ng-container>
+                <div class="app-block-row">
+                    <mat-icon>groups</mat-icon>
+                    <p>{{ twitterFollowers | numberTruncate }}</p>
+                </div>
+            </div>
+        </app-user-plate-block>
+        }
+
         <!-- Spotify -->
-        <ng-container *ngIf="!!userStats.spotifyStats.length && spotifyFollowers > 0">
-            <app-user-plate-block [accountType]="'spotify'">
-                <div class="app-block-rows-container">
-                    <div class="app-block-row primary">
-                        <p>Spotify</p>
-                    </div>
-                    <div class="app-block-row">
-                        <mat-icon>groups</mat-icon>
-                        <p>{{ spotifyFollowers | numberTruncate }}</p>
-                    </div>
+        @if(!!userStats.spotifyStats.length && spotifyFollowers > 0) {
+        <app-user-plate-block [accountType]="'spotify'">
+            <div class="app-block-rows-container">
+                <div class="app-block-row primary">
+                    <p>Spotify</p>
                 </div>
-            </app-user-plate-block>
-        </ng-container>
+                <div class="app-block-row">
+                    <mat-icon>groups</mat-icon>
+                    <p>{{ spotifyFollowers | numberTruncate }}</p>
+                </div>
+            </div>
+        </app-user-plate-block>
+        }
+
         <!-- Newgrounds -->
-        <ng-container *ngIf="!!userStats.newgroundsStats.length && newgroundsFollowers > 0">
-            <app-user-plate-block [accountType]="'newgrounds'">
-                <div class="app-block-rows-container">
-                    <div class="app-block-row primary">
-                        <p>Newgrounds</p>
-                    </div>
-                    <div class="app-block-row">
-                        <mat-icon>groups</mat-icon>
-                        <p>{{ newgroundsFollowers | numberTruncate }}</p>
-                    </div>
+        @if(!!userStats.newgroundsStats.length && newgroundsFollowers > 0) {
+        <app-user-plate-block [accountType]="'newgrounds'">
+            <div class="app-block-rows-container">
+                <div class="app-block-row primary">
+                    <p>Newgrounds</p>
                 </div>
-            </app-user-plate-block>
-        </ng-container>
+                <div class="app-block-row">
+                    <mat-icon>groups</mat-icon>
+                    <p>{{ newgroundsFollowers | numberTruncate }}</p>
+                </div>
+            </div>
+        </app-user-plate-block>
+        }
+
         <!-- SoundCloud -->
-        <ng-container *ngIf="!!userStats.soundcloudStats.length && soundcloudFollowers > 0">
-            <app-user-plate-block [accountType]="'soundcloud'">
-                <div class="app-block-rows-container">
-                    <div class="app-block-row primary">
-                        <p>SoundCloud</p>
-                    </div>
-                    <div class="app-block-row">
-                        <mat-icon>groups</mat-icon>
-                        <p>{{ soundcloudFollowers | numberTruncate }}</p>
-                    </div>
+        @if(!!userStats.soundcloudStats.length && soundcloudFollowers > 0) {
+        <app-user-plate-block [accountType]="'soundcloud'">
+            <div class="app-block-rows-container">
+                <div class="app-block-row primary">
+                    <p>SoundCloud</p>
                 </div>
-            </app-user-plate-block>
-        </ng-container>
+                <div class="app-block-row">
+                    <mat-icon>groups</mat-icon>
+                    <p>{{ soundcloudFollowers | numberTruncate }}</p>
+                </div>
+            </div>
+        </app-user-plate-block>
+        }
+
         <!-- Twitch -->
-        <ng-container *ngIf="!!userStats.twitchStats.length && twitchFollowers > 0">
-            <app-user-plate-block [accountType]="'twitch'">
-                <div class="app-block-rows-container">
-                    <div class="app-block-row primary">
-                        <p>Twitch</p>
-                    </div>
-                    <div class="app-block-row">
-                        <mat-icon>groups</mat-icon>
-                        <p>{{ twitchFollowers | numberTruncate }}</p>
-                    </div>
+        @if(!!userStats.twitchStats.length && twitchFollowers > 0) {
+        <app-user-plate-block [accountType]="'twitch'">
+            <div class="app-block-rows-container">
+                <div class="app-block-row primary">
+                    <p>Twitch</p>
                 </div>
-            </app-user-plate-block>
-        </ng-container>
+                <div class="app-block-row">
+                    <mat-icon>groups</mat-icon>
+                    <p>{{ twitchFollowers | numberTruncate }}</p>
+                </div>
+            </div>
+        </app-user-plate-block>
+        }
+
         <!-- TikTok -->
-        <ng-container *ngIf="!!userStats.tiktokStats.length && tiktokFollowers > 0">
-            <app-user-plate-block [accountType]="'tiktok'">
-                <div class="app-block-rows-container">
-                    <div class="app-block-row primary">
-                        <p>TikTok</p>
-                    </div>
-                    <div class="app-block-row">
-                        <mat-icon>groups</mat-icon>
-                        <p>{{ tiktokFollowers | numberTruncate }}</p>
-                    </div>
+        @if(!!userStats.tiktokStats.length && tiktokFollowers > 0) {
+        <app-user-plate-block [accountType]="'tiktok'">
+            <div class="app-block-rows-container">
+                <div class="app-block-row primary">
+                    <p>TikTok</p>
                 </div>
-            </app-user-plate-block>
-        </ng-container>
+                <div class="app-block-row">
+                    <mat-icon>groups</mat-icon>
+                    <p>{{ tiktokFollowers | numberTruncate }}</p>
+                </div>
+            </div>
+        </app-user-plate-block>
+        }
+
         <!-- Facebook -->
-        <ng-container *ngIf="!!userStats.facebookStats.length && facebookFollowers > 0">
-            <app-user-plate-block [accountType]="'facebook'">
-                <div class="app-block-rows-container">
-                    <div class="app-block-row primary">
-                        <p>Facebook</p>
-                    </div>
-                    <div class="app-block-row">
-                        <mat-icon>groups</mat-icon>
-                        <p>{{ facebookFollowers | numberTruncate }}</p>
-                    </div>
+        @if(!!userStats.facebookStats.length && facebookFollowers > 0) {
+        <app-user-plate-block [accountType]="'facebook'">
+            <div class="app-block-rows-container">
+                <div class="app-block-row primary">
+                    <p>Facebook</p>
                 </div>
-            </app-user-plate-block>
-        </ng-container>
+                <div class="app-block-row">
+                    <mat-icon>groups</mat-icon>
+                    <p>{{ facebookFollowers | numberTruncate }}</p>
+                </div>
+            </div>
+        </app-user-plate-block>
+        }
     </div>
     <div class="user-link">
         <p>vanityplate.social/u/{{ userStats.id }}</p>

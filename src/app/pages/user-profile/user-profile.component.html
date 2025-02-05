@@ -1,11 +1,14 @@
 <div class="stats-container">
     <!-- User Profile Summary Plate -->
-    <ng-container *ngIf="!loading">
-        <app-user-plate [userStats]="userStats" [userSum]="userSum"></app-user-plate>
-    </ng-container>
+    @if(!loading) {
+    <app-user-plate [userStats]="userStats" [userSum]="userSum"></app-user-plate>
+    }
     <!-- Time Retrieved -->
+
     <div class="timestamp">
-        <p *ngIf="!!timeRetrieved">Stats Last Updated {{ timeRetrieved | date : 'medium' }}</p>
+        @if(!!timeRetrieved) {
+        <p>Stats Last Updated {{ timeRetrieved | date : 'medium' }}</p>
+        }
     </div>
 
     <mat-tab-group
@@ -225,22 +228,27 @@
         [link]="account?.link ?? ''"
         [accountType]="'instagram'">
         <div class="details-items-container">
-            <div class="details-item primary" *ngIf="!!account.displayName">
+            @if(!!account.displayName) {
+            <div class="details-item primary">
                 <mat-icon>account_circle</mat-icon>
                 <p appTruncationTip>{{ account.displayName }}</p>
             </div>
+            }
             <div class="details-item">
                 <mat-icon>badge</mat-icon>
                 <p appTruncationTip>&#64;{{ account.username }}</p>
             </div>
-            <div class="details-item" *ngIf="account.followerCount > 0">
+            @if(account.followerCount > 0) {
+            <div class="details-item">
                 <mat-icon>groups</mat-icon>
                 <p appTruncationTip>{{ account.followerCount | number }} Followers</p>
             </div>
-            <div class="details-item" *ngIf="account.followingCount > 0">
+            } @if(account.followingCount > 0) {
+            <div class="details-item">
                 <mat-icon>person_add</mat-icon>
                 <p appTruncationTip>{{ account.followingCount | number }} Following</p>
             </div>
+            }
         </div>
     </app-account-block>
 </ng-template>
@@ -253,22 +261,28 @@
         [link]="account?.link ?? ''"
         [accountType]="'threads'">
         <div class="details-items-container">
-            <div class="details-item primary" *ngIf="!!account.displayName">
+            @if(!!account.displayName) {
+            <div class="details-item primary">
                 <mat-icon>account_circle</mat-icon>
                 <p appTruncationTip>{{ account.displayName }}</p>
             </div>
+            }
+
             <div class="details-item">
                 <mat-icon>badge</mat-icon>
                 <p appTruncationTip>&#64;{{ account.username }}</p>
             </div>
-            <div class="details-item" *ngIf="account.followerCount > 0">
+            @if(account.followerCount > 0) {
+            <div class="details-item">
                 <mat-icon>groups</mat-icon>
                 <p appTruncationTip>{{ account.followerCount | number }} Followers</p>
             </div>
-            <div class="details-item" *ngIf="account.followingCount > 0">
+            } @if(account.followingCount > 0) {
+            <div class="details-item">
                 <mat-icon>person_add</mat-icon>
                 <p appTruncationTip>{{ account.followingCount | number }} Following</p>
             </div>
+            }
         </div>
     </app-account-block>
 </ng-template>
@@ -371,26 +385,34 @@
         [link]="account?.link ?? ''"
         [accountType]="'twitter'">
         <div class="details-items-container">
-            <div class="details-item primary" *ngIf="!!account.displayName">
+            @if(!!account.displayName) {
+
+            <div class="details-item primary">
                 <mat-icon>account_circle</mat-icon>
                 <p appTruncationTip>{{ account.displayName }}</p>
             </div>
+            }
+
             <div class="details-item">
                 <mat-icon>badge</mat-icon>
                 <p appTruncationTip>&#64;{{ account.username }}</p>
             </div>
-            <div class="details-item" *ngIf="account.followerCount > 0">
+            @if(account.followerCount > 0) {
+            <div class="details-item">
                 <mat-icon>groups</mat-icon>
                 <p appTruncationTip>{{ account.followerCount | number }} Followers</p>
             </div>
-            <div class="details-item" *ngIf="account.followingCount > 0">
+            } @if(account.followingCount > 0) {
+            <div class="details-item">
                 <mat-icon>person_add</mat-icon>
                 <p appTruncationTip>{{ account.followingCount | number }} Following</p>
             </div>
-            <div class="details-item" *ngIf="account.totalTweets > 0">
+            } @if(account.totalTweets > 0) {
+            <div class="details-item">
                 <mat-icon>newspaper</mat-icon>
                 <p appTruncationTip>{{ account.totalTweets | number }} Tweets</p>
             </div>
+            }
         </div>
     </app-account-block>
 </ng-template>

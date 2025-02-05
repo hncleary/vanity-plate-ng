@@ -1,9 +1,8 @@
 <mat-card appearance="outlined">
     <div class="platform-icon">
-        <!--  -->
-        <ng-container *ngIf="!!accountType">
-            <mat-icon [svgIcon]="accountType"></mat-icon>
-        </ng-container>
+        @if(!!accountType) {
+        <mat-icon [svgIcon]="accountType"></mat-icon>
+        }
     </div>
     <div class="platform-summary">
         <ng-content></ng-content>
