@@ -4,12 +4,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { WhatsNewComponent } from './pages/whats-new/whats-new.component';
+import { MilestonesComponent } from './pages/milestones/milestones.component';
 
 export enum PAGE_ROUTES {
     HOME = 'home',
     ABOUT = 'about',
     WHATS_NEW = 'whats-new',
     USER = 'u',
+    MILESTONES = 'milestones',
 }
 
 const routes: Routes = [
@@ -17,6 +19,7 @@ const routes: Routes = [
     { path: PAGE_ROUTES.ABOUT, component: AboutComponent },
     { path: PAGE_ROUTES.WHATS_NEW, component: WhatsNewComponent },
     { path: PAGE_ROUTES.USER + '/:userId', component: UserProfileComponent },
+    { path: PAGE_ROUTES.MILESTONES, component: MilestonesComponent },
     { path: '', redirectTo: PAGE_ROUTES.HOME, pathMatch: 'full' },
     { path: '**', redirectTo: PAGE_ROUTES.HOME },
 ];

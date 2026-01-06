@@ -32,6 +32,7 @@ import { GenericFilterPipe } from './pipes/generic-filter.pipe';
 import { NumberTruncatePipe } from './pipes/number-truncate.pipe';
 import { MatRippleModule } from '@angular/material/core';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MilestonesComponent } from './pages/milestones/milestones.component';
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import { MatTabsModule } from '@angular/material/tabs';
         AccountBlockComponent,
         TruncationTipDirective,
         UserPlateBlockComponent,
+        MilestonesComponent,
     ],
     bootstrap: [AppComponent],
     imports: [
